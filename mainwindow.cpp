@@ -1,9 +1,14 @@
 
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "testwindow.h"
+
 #include <QList>
 #include <QCheckBox>
 #include <QAction>
+#include <QWidget>
+#include <QScreen>
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -16,6 +21,15 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::createTestWindow(const char *str)
+{
+    // Створення нового вікна
+    TestWindow *newWindow = new TestWindow();
+    newWindow->setStyleSheet(str);
+    // Показ вікна на повний екран
+    newWindow->showFullScreen();
 }
 
 
@@ -68,5 +82,11 @@ void MainWindow::on_actionClear_All_triggered()
             checkBoxes.at(j)->setChecked(false);
         }
     }
+}
+
+
+void MainWindow::on_RunTests_clicked()
+{
+    createTestWindow("background-color: blue;");
 }
 

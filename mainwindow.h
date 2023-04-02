@@ -19,6 +19,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void createTestWindow(const char *);
+
 private slots:
     void on_CalibrationTests_clicked();
     void on_GridTests_clicked();
@@ -28,6 +30,8 @@ private slots:
     void on_actionSelect_all_triggered();
 
     void on_actionClear_All_triggered();
+
+    void on_RunTests_clicked();
 
 private:
     Ui::MainWindow *ui;
