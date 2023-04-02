@@ -3,6 +3,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <vector>
+#include "testwindow.h"
+
 
 
 
@@ -19,7 +22,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void createTestWindow(const char *);
+    void createTestWindow();
+    std::vector<const char*> getVector();
+
+protected:
 
 private slots:
     void on_CalibrationTests_clicked();
@@ -28,13 +34,16 @@ private slots:
     void on_ReadingTests_clicked();
 
     void on_actionSelect_all_triggered();
-
     void on_actionClear_All_triggered();
-
     void on_RunTests_clicked();
 
 private:
     Ui::MainWindow *ui;
+    std::vector<const char*> testsVector{};
+    TestWindow *newWindow;
+
+private:
+    void addSelectedColorTests();
 };
 
 #endif // MAINWINDOW_H
