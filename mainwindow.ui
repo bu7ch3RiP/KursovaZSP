@@ -715,7 +715,7 @@
      <widget class="QGroupBox" name="groupBox_8">
       <property name="geometry">
        <rect>
-        <x>339</x>
+        <x>340</x>
         <y>30</y>
         <width>231</width>
         <height>251</height>
@@ -742,7 +742,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_8">
        <item>
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="WhiteText">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -754,7 +754,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkBox_2">
+        <widget class="QCheckBox" name="BlackText">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -766,7 +766,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkBox_3">
+        <widget class="QCheckBox" name="RedText">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -778,7 +778,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkBox_4">
+        <widget class="QCheckBox" name="BlueText">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -790,7 +790,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkBox_5">
+        <widget class="QCheckBox" name="MagentaText">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -802,7 +802,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkBox_6">
+        <widget class="QCheckBox" name="YellowText">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
