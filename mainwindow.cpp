@@ -29,13 +29,31 @@ void MainWindow::createTestWindow()
     //TestWindow *newWindow = new TestWindow();
     newWindow = new TestWindow();
     newWindow->setVectorValues(getVector());
-    newWindow->setStyleSheet(newWindow->getFirstElement());
+    newWindow->setCodeVector(getCodeVector());
+    newWindow->setColorVector(getColorVector());
+
+    switch(getFirstCodeElement()){
+    case 4:
+        newWindow->setStyleSheet(newWindow->getFirstElement());
+        break;
+    case 5:
+        newWindow->GradientTest(getFirstColorElement());
+        break;
+    case 6:
+        break;
+    case 7:
+        break;
+    }
     // Показ вікна на повний екран
     newWindow->showFullScreen();
 
     //newWindow->resize(400, 400);
     //newWindow->show();
 }
+
+
+std::vector<uint8_t> MainWindow::getCodeVector(){return testCodeVector;}
+std::vector<QColor> MainWindow::getColorVector(){return testColorVector;}
 
 std::vector<const char *> MainWindow::getVector()
 {
@@ -96,14 +114,14 @@ void MainWindow::on_actionClear_All_triggered()
 
 void MainWindow::on_RunTests_clicked()
 {
-    //createTestWindow("background-color: blue;");
+
     if(ui->stackedWidget->currentIndex() == 2)
         addSelectedColorTests();
 
-    if(testsVector.empty()){
+    //if(testsVector.empty()){
         //to do qmessageBox not selected test
-        return;
-    }
+        //return;
+    //}
     createTestWindow();
 }
 
@@ -111,27 +129,82 @@ void MainWindow::addSelectedColorTests()
 {
     if(!testsVector.empty())
         testsVector.clear();
+    if(!testCodeVector.empty())
+        testCodeVector.clear();
 
-    if(ui->Red->isChecked())
+    //Solid Tests
+    if(ui->Red->isChecked()){
         testsVector.push_back("background-color: #FF0000;");
-
-    if(ui->Green->isChecked())
+        testCodeVector.push_back(4);
+    }
+    if(ui->Green->isChecked()){
         testsVector.push_back("background-color: #00FF00;");
-
-    if(ui->Blue->isChecked())
+        testCodeVector.push_back(4);
+    }
+    if(ui->Blue->isChecked()){
         testsVector.push_back("background-color: #0000FF;");
-
-    if(ui->Orange->isChecked())
+        testCodeVector.push_back(4);
+    }
+    if(ui->Orange->isChecked()){
         testsVector.push_back("background-color: #FFB400;");
-
-    if(ui->White->isChecked())
+        testCodeVector.push_back(4);
+    }
+    if(ui->White->isChecked()){
         testsVector.push_back("background-color: #FFFFFF;");
-
-    if(ui->Black->isChecked())
+        testCodeVector.push_back(4);
+    }
+    if(ui->Black->isChecked()){
         testsVector.push_back("background-color: #000000;");
-
-    if(ui->Gray50->isChecked())
+        testCodeVector.push_back(4);
+    }
+    if(ui->Gray50->isChecked()){
         testsVector.push_back("background-color: #7F7F7F;");
+        testCodeVector.push_back(4);
+    }
+
+    //Gradient
+    if(ui->RedGradient->isChecked()){
+        testCodeVector.push_back(5);
+        testColorVector.push_back(QColor("#FF0000"));
+    }
+
+    if(ui->GreenGradient->isChecked()){
+        testCodeVector.push_back(5);
+        testColorVector.push_back(QColor("#00FF00"));
+    }
+
+    if(ui->BlueGradient->isChecked()){
+        testCodeVector.push_back(5);
+        testColorVector.push_back(QColor("#0000FF"));
+    }
+
+    if(ui->OrangeGradient->isChecked()){
+        testCodeVector.push_back(5);
+        testColorVector.push_back(QColor("#FFB400"));
+    }
+
+    if(ui->GrayGradient->isChecked()){
+        testCodeVector.push_back(5);
+        testColorVector.push_back(Qt::gray);
+    }
+
+    //ColorPallet
+    if(ui->ColorPalette->isChecked()){
+        testCodeVector.push_back(6);
+    }
+    if(ui->ColorPalette180->isChecked()){
+        testCodeVector.push_back(7);
+    }
+}
+
+uint8_t MainWindow::getFirstCodeElement()
+{
+    return testCodeVector[0];
+}
+
+QColor MainWindow::getFirstColorElement()
+{
+    return testColorVector[0];
 }
 
 

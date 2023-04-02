@@ -4,6 +4,7 @@
 
 #include <QMainWindow>
 #include <vector>
+#include <QColor>
 #include "testwindow.h"
 
 
@@ -24,6 +25,8 @@ public:
 
     void createTestWindow();
     std::vector<const char*> getVector();
+    std::vector<uint8_t> getCodeVector();
+    std::vector<QColor> getColorVector();
 
 protected:
 
@@ -40,10 +43,14 @@ private slots:
 private:
     Ui::MainWindow *ui;
     std::vector<const char*> testsVector{};
+    std::vector<uint8_t> testCodeVector{};
+    std::vector<QColor> testColorVector{};
     TestWindow *newWindow;
 
 private:
     void addSelectedColorTests();
+    uint8_t getFirstCodeElement();
+    QColor getFirstColorElement();
 };
 
 #endif // MAINWINDOW_H

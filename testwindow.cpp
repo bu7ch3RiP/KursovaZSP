@@ -1,4 +1,3 @@
-
 #include "testwindow.h"
 #include <QtWidgets>
 #include <QPushButton>
@@ -9,6 +8,7 @@
 #include <QPaintEvent>
 #include <QVBoxLayout>
 #include <QKeyEvent>
+#include <QLinearGradient>
 
 TestWindow::TestWindow(QWidget *parent)
     : QWidget{parent}
@@ -30,21 +30,69 @@ void TestWindow::setVectorValues(std::vector<const char *> v)
     this->testsVector = v;
 }
 
+void TestWindow::setCodeVector(std::vector<uint8_t> v){
+    this->testCodeVector = v;
+}
+
+void TestWindow::setColorVector(std::vector<QColor> v){
+    this->testColorVector = v;
+}
+
+void TestWindow::setPallete(const char *path)
+{
+    QLabel label(this);
+    QPixmap pixmap(path);
+    label.setPixmap(pixmap);
+    label.setAlignment(Qt::AlignCenter);
+
+    //setCentralWidget(&label);
+    setWindowState(Qt::WindowFullScreen);
+
+}
+
 const char *TestWindow::getFirstElement()
 {
     return testsVector[0];
+}
+
+void TestWindow::GradientTest(QColor color)
+{
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QLinearGradient gradient(0, 0, screen->geometry().width(), screen->geometry().height());
+    gradient.setColorAt(0, Qt::black);
+    gradient.setColorAt(1, color);
+
+    // Set the widget's background to the gradient
+    setAutoFillBackground(true);
+    QPalette pal = palette();
+    pal.setBrush(backgroundRole(), QBrush(gradient));
+    setPalette(pal);
 }
 
 void TestWindow::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
     case Qt::Key_Left:
-        index_ = (index_ - 1 + testsVector.size()) % testsVector.size();
-        setStyleSheet(testsVector[index_]);
+        index_ = (index_ - 1 + testCodeVector.size()) % testCodeVector.size();
+        if(testCodeVector[index_] == 4)
+            setStyleSheet(testsVector[index_]);
+        if(testCodeVector[index_] == 5)
+            GradientTest(testColorVector[index_]);
+        if(testCodeVector[index_] == 6)
+            qDebug() << "Good";
+        if(testCodeVector[index_] == 7)
+            qDebug() << "Bad180";
         break;
     case Qt::Key_Right:
-        index_ = (index_ + 1) % testsVector.size();
-        this->setStyleSheet(testsVector[index_]);
+        index_ = (index_ + 1) % testCodeVector.size();
+        if(testCodeVector[index_] == 4)
+            this->setStyleSheet(testsVector[index_]);
+        if(testCodeVector[index_] == 5)
+            GradientTest(testColorVector[index_]);
+        if(testCodeVector[index_] == 6)
+            qDebug() << "Good";
+        if(testCodeVector[index_] == 7)
+            qDebug() << "Bad180";
         break;
     default:
         QWidget::keyPressEvent(event);
