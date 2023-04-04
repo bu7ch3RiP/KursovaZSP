@@ -4,6 +4,7 @@
 #include <QGuiApplication>
 #include <QPainter>
 #include <QRect>
+#include <QPixmap>
 #include <QScreen>
 #include <QPaintEvent>
 #include <QVBoxLayout>
@@ -21,6 +22,7 @@ TestWindow::TestWindow(QWidget *parent)
     // Розміщення кнопки на вікні
     QScreen *screen = QGuiApplication::primaryScreen();
     backButton->setGeometry(QRect(QPoint(screen->geometry().width()-35, 5), QSize(30, 30)));
+
     index_ = 0;
     setFocusPolicy( Qt::StrongFocus );
 }
@@ -38,21 +40,32 @@ void TestWindow::setColorVector(std::vector<QColor> v){
     this->testColorVector = v;
 }
 
-void TestWindow::setPallete(const char *path)
-{
-    QLabel label(this);
-    QPixmap pixmap(path);
-    label.setPixmap(pixmap);
-    label.setAlignment(Qt::AlignCenter);
-
-    //setCentralWidget(&label);
-    setWindowState(Qt::WindowFullScreen);
-
-}
-
 const char *TestWindow::getFirstElement()
 {
     return testsVector[0];
+}
+
+void TestWindow::paletteTest(const char *path)
+{
+    // Create a new widget
+    //QWidget *widget = new QWidget();
+    QScreen *screen = QGuiApplication::primaryScreen();
+    // Load the image to be displayed
+    QPixmap pixmap(path);
+
+    // Create a label to hold the image
+    QLabel *label = new QLabel(this);
+    label->setPixmap(pixmap);
+
+    // Resize the label to fill the widget
+    label->setFixedHeight(screen->geometry().height());
+    label->setFixedWidth(screen->geometry().width());
+    //label->resize(size());
+    label->setScaledContents(true);
+
+    // Set the widget to be the top-level widget and display it in full screen
+    setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+    showFullScreen();
 }
 
 void TestWindow::GradientTest(QColor color)
@@ -79,9 +92,9 @@ void TestWindow::keyPressEvent(QKeyEvent *event)
         if(testCodeVector[index_] == 5)
             GradientTest(testColorVector[index_]);
         if(testCodeVector[index_] == 6)
-            qDebug() << "Good";
+            paletteTest(":/color/palette/pictures/Palette.png");
         if(testCodeVector[index_] == 7)
-            qDebug() << "Bad180";
+            paletteTest(":/color/palette/pictures/Palette180.png");
         break;
     case Qt::Key_Right:
         index_ = (index_ + 1) % testCodeVector.size();
@@ -90,9 +103,9 @@ void TestWindow::keyPressEvent(QKeyEvent *event)
         if(testCodeVector[index_] == 5)
             GradientTest(testColorVector[index_]);
         if(testCodeVector[index_] == 6)
-            qDebug() << "Good";
+            paletteTest(":/color/palette/pictures/Palette.png");
         if(testCodeVector[index_] == 7)
-            qDebug() << "Bad180";
+            paletteTest(":/color/palette/pictures/Palette180.png");
         break;
     default:
         QWidget::keyPressEvent(event);

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/color/palette">
+        <file>pictures/Palette.png</file>
+        <file>pictures/Palette180.png</file>
+    </qresource>
+</RCC>

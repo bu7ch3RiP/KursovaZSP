@@ -40,8 +40,10 @@ void MainWindow::createTestWindow()
         newWindow->GradientTest(getFirstColorElement());
         break;
     case 6:
+        newWindow->paletteTest(":/color/palette/pictures/Palette.png");
         break;
     case 7:
+        newWindow->paletteTest(":/color/palette/pictures/Palette180.png");
         break;
     }
     // Показ вікна на повний екран
@@ -127,8 +129,6 @@ void MainWindow::on_RunTests_clicked()
 
 void MainWindow::addSelectedColorTests()
 {
-    if(!testsVector.empty())
-        testsVector.clear();
     if(!testCodeVector.empty())
         testCodeVector.clear();
 

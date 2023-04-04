@@ -21,6 +21,8 @@ set(PROJECT_SOURCES
         mainwindow.ui
 )
 
+qt6_add_resources(PROJECT_SOURCES Res.qrc)
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(DisplayTesting
         MANUAL_FINALIZATION

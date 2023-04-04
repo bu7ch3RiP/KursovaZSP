@@ -16,9 +16,8 @@ public:
     void setCodeVector(std::vector<uint8_t>);
     void setColorVector(std::vector<QColor>);
 
-    void setPallete(const char*);
-
     const char *getFirstElement();
+    void paletteTest(const char*);
 
 
     void GradientTest(QColor);
