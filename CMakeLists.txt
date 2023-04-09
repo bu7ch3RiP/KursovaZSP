@@ -17,6 +17,8 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         testwindow.cpp
         gridwidget.cpp
+        tablewidget.cpp
+        tablewidget.h
         gridwidget.h
         testwindow.h
         mainwindow.h

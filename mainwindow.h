@@ -7,6 +7,7 @@
 #include <QColor>
 #include "testwindow.h"
 #include "gridwidget.h"
+#include "tablewidget.h"
 
 
 
@@ -48,10 +49,12 @@ private:
     std::vector<QColor> testColorVector{};
     TestWindow *newWindow;
     GridWidget *gridTest;
+    TableWidget *tableWidget;
 
 private:
     void addSelectedColorTests();
     void addSelectedGridTests();
+    void addReadTests();
     uint8_t getFirstCodeElement();
     QColor getFirstColorElement();
 };

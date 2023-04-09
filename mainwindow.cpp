@@ -46,7 +46,6 @@ void MainWindow::createTestWindow()
     switch(getFirstCodeElement()){
 
     case 2:
-
         break;
     case 3:
         break;
@@ -135,11 +134,15 @@ void MainWindow::on_RunTests_clicked()
 {
     isOneTest = true;
 
+    if(ui->stackedWidget->currentIndex() == 1)
+        addSelectedGridTests();
+
     if(ui->stackedWidget->currentIndex() == 2)
         addSelectedColorTests();
 
-    if(ui->stackedWidget->currentIndex() == 1)
-        addSelectedGridTests();
+    if(ui->stackedWidget->currentIndex() == 3)
+        addReadTests();
+
     //if(testsVector.empty()){
         //to do qmessageBox not selected test
         //return;
@@ -292,6 +295,43 @@ void MainWindow::addSelectedGridTests()
 
     if(ui->YellowGrid->isChecked()){
         testCodeVector.push_back(2);
+        testColorVector.push_back(Qt::yellow);
+    }
+
+}
+
+void MainWindow::addReadTests()
+{
+    if(!testCodeVector.empty())
+        testCodeVector.clear();
+
+    if(ui->WhiteText->isChecked()){
+        testCodeVector.push_back(8);
+        testColorVector.push_back(Qt::white);
+    }
+
+    if(ui->BlackText->isChecked()){
+        testCodeVector.push_back(8);
+        testColorVector.push_back(Qt::black);
+    }
+
+    if(ui->RedText->isChecked()){
+        testCodeVector.push_back(8);
+        testColorVector.push_back(Qt::red);
+    }
+
+    if(ui->BlueText->isChecked()){
+        testCodeVector.push_back(8);
+        testColorVector.push_back(Qt::blue);
+    }
+
+    if(ui->MagentaText->isChecked()){
+        testCodeVector.push_back(8);
+        testColorVector.push_back(Qt::magenta);
+    }
+
+    if(ui->YellowText->isChecked()){
+        testCodeVector.push_back(8);
         testColorVector.push_back(Qt::yellow);
     }
 
