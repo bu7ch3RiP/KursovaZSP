@@ -49,6 +49,7 @@ private:
 
 private:
     void addSelectedColorTests();
+    void addSelectedGridTests();
     uint8_t getFirstCodeElement();
     QColor getFirstColorElement();
 };

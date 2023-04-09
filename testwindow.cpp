@@ -48,7 +48,6 @@ const char *TestWindow::getFirstElement()
 void TestWindow::paletteTest(const char *path)
 {
     // Create a new widget
-    //QWidget *widget = new QWidget();
     QScreen *screen = QGuiApplication::primaryScreen();
     // Load the image to be displayed
     QPixmap pixmap(path);
@@ -60,12 +59,21 @@ void TestWindow::paletteTest(const char *path)
     // Resize the label to fill the widget
     label->setFixedHeight(screen->geometry().height());
     label->setFixedWidth(screen->geometry().width());
-    //label->resize(size());
-    label->setScaledContents(true);
+
+    //label->setScaledContents(true);
 
     // Set the widget to be the top-level widget and display it in full screen
-    setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
-    showFullScreen();
+    //setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+
+}
+
+void TestWindow::deleteAllWidgets()
+{
+    QLayoutItem* child;
+    while ((child = layout()->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
 }
 
 void TestWindow::GradientTest(QColor color)
@@ -91,10 +99,12 @@ void TestWindow::keyPressEvent(QKeyEvent *event)
             setStyleSheet(testsVector[index_]);
         if(testCodeVector[index_] == 5)
             GradientTest(testColorVector[index_]);
-        if(testCodeVector[index_] == 6)
+        if(testCodeVector[index_] == 6){
             paletteTest(":/color/palette/pictures/Palette.png");
-        if(testCodeVector[index_] == 7)
+        }
+        if(testCodeVector[index_] == 7){
             paletteTest(":/color/palette/pictures/Palette180.png");
+        }
         break;
     case Qt::Key_Right:
         index_ = (index_ + 1) % testCodeVector.size();
@@ -102,16 +112,37 @@ void TestWindow::keyPressEvent(QKeyEvent *event)
             this->setStyleSheet(testsVector[index_]);
         if(testCodeVector[index_] == 5)
             GradientTest(testColorVector[index_]);
-        if(testCodeVector[index_] == 6)
+        if(testCodeVector[index_] == 6){
             paletteTest(":/color/palette/pictures/Palette.png");
-        if(testCodeVector[index_] == 7)
+        }
+        if(testCodeVector[index_] == 7){
             paletteTest(":/color/palette/pictures/Palette180.png");
+        }
         break;
     default:
         QWidget::keyPressEvent(event);
         break;
     }
 }
+
+//void TestWindow::setImage(const QPixmap &pixmap)
+//{
+//    // Set background color to black
+//    QPalette pal = palette();
+//    pal.setColor(QPalette::Window, Qt::black);
+//    setAutoFillBackground(true);
+//    setPalette(pal);
+//
+//    // Scale image to fit the widget size
+//    QPixmap scaledPixmap = pixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+//
+//    // Set the image label
+//    if (!imageLabel) {
+//        imageLabel = new QLabel(this);
+//    }
+//    imageLabel->setPixmap(scaledPixmap);
+//    imageLabel->setAlignment(Qt::AlignCenter);
+//}
 
 
 
