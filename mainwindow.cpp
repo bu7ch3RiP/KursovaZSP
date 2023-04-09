@@ -242,7 +242,40 @@ void MainWindow::addSelectedGridTests()
         testColorVector.push_back(Qt::yellow);
     }
 
-    //Black background
+    //Black background 2
+
+    if(ui->WhiteGrid->isChecked()){
+        testCodeVector.push_back(2);
+        testColorVector.push_back(Qt::white);
+    }
+
+    if(ui->RedGrid->isChecked()){
+        testCodeVector.push_back(2);
+        testColorVector.push_back(Qt::red);
+    }
+
+    if(ui->GreenGrid->isChecked()){
+        testCodeVector.push_back(2);
+        testColorVector.push_back(Qt::green);
+    }
+
+    if(ui->BlueGrid->isChecked()){
+        testCodeVector.push_back(2);
+        testColorVector.push_back(Qt::blue);
+    }
+
+    if(ui->MagentaGrid->isChecked()){
+        testCodeVector.push_back(2);
+        testColorVector.push_back(Qt::magenta);
+    }
+
+    if(ui->YellowGrid->isChecked()){
+        testCodeVector.push_back(2);
+        testColorVector.push_back(Qt::yellow);
+    }
+
+    //                    YellowGrid
+
 }
 
 uint8_t MainWindow::getFirstCodeElement()
