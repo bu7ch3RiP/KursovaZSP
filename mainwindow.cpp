@@ -27,12 +27,29 @@ void MainWindow::createTestWindow()
 {
     // Створення нового вікна
     //TestWindow *newWindow = new TestWindow();
-    newWindow = new TestWindow();
-    newWindow->setVectorValues(getVector());
-    newWindow->setCodeVector(getCodeVector());
-    newWindow->setColorVector(getColorVector());
+    if(isOneTest){
+        if(ui->stackedWidget->currentIndex() == 1){
+            gridTest = new GridWidget();
+            gridTest->setTestCodeVector(getCodeVector());
+            gridTest->setTestColorVector(getColorVector());
+            gridTest->setColor(gridTest->getFirstColor());
+            gridTest->showFullScreen();
+        }else if (ui->stackedWidget->currentIndex() == 2){
+            newWindow = new TestWindow();
+            newWindow->setVectorValues(getVector());
+            newWindow->setCodeVector(getCodeVector());
+            newWindow->setColorVector(getColorVector());
+            newWindow->showFullScreen();
+        }
+    }
 
     switch(getFirstCodeElement()){
+
+    case 2:
+
+        break;
+    case 3:
+        break;
     case 4:
         newWindow->setStyleSheet(newWindow->getFirstElement());
         break;
@@ -47,7 +64,7 @@ void MainWindow::createTestWindow()
         break;
     }
     // Показ вікна на повний екран
-    newWindow->showFullScreen();
+    //newWindow->showFullScreen();
 
     //newWindow->resize(400, 400);
     //newWindow->show();
@@ -116,6 +133,7 @@ void MainWindow::on_actionClear_All_triggered()
 
 void MainWindow::on_RunTests_clicked()
 {
+    isOneTest = true;
 
     if(ui->stackedWidget->currentIndex() == 2)
         addSelectedColorTests();
@@ -131,6 +149,7 @@ void MainWindow::on_RunTests_clicked()
 
 void MainWindow::addSelectedColorTests()
 {
+
     if(!testCodeVector.empty())
         testCodeVector.clear();
 
@@ -201,6 +220,8 @@ void MainWindow::addSelectedColorTests()
 
 void MainWindow::addSelectedGridTests()
 {
+
+
     if(!testCodeVector.empty())
         testCodeVector.clear();
 
@@ -273,8 +294,6 @@ void MainWindow::addSelectedGridTests()
         testCodeVector.push_back(2);
         testColorVector.push_back(Qt::yellow);
     }
-
-    //                    YellowGrid
 
 }
 

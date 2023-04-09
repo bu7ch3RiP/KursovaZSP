@@ -22,12 +22,6 @@ public:
 
     void deleteAllWidgets();
 
-
-
-
-
-
-
     void GradientTest(QColor);
 
 protected:

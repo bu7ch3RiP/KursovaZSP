@@ -76,6 +76,7 @@ void TestWindow::deleteAllWidgets()
     }
 }
 
+
 void TestWindow::GradientTest(QColor color)
 {
     QScreen *screen = QGuiApplication::primaryScreen();

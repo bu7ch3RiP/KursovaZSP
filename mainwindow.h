@@ -6,7 +6,7 @@
 #include <vector>
 #include <QColor>
 #include "testwindow.h"
-
+#include "gridwidget.h"
 
 
 
@@ -42,10 +42,12 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    bool isOneTest{};
     std::vector<const char*> testsVector{};
     std::vector<uint8_t> testCodeVector{};
     std::vector<QColor> testColorVector{};
     TestWindow *newWindow;
+    GridWidget *gridTest;
 
 private:
     void addSelectedColorTests();
