@@ -140,7 +140,6 @@ void MainWindow::on_actionClear_All_triggered()
 
 void MainWindow::on_RunTests_clicked()
 {
-
     isOneTest = true;
 
     if(ui->stackedWidget->currentIndex() == 1)
@@ -152,10 +151,6 @@ void MainWindow::on_RunTests_clicked()
     if(ui->stackedWidget->currentIndex() == 3)
         addReadTests();
 
-    //if(testsVector.empty()){
-        //to do qmessageBox not selected test
-        //return;
-    //}
     createTestWindow();
 }
 
@@ -175,54 +170,66 @@ void MainWindow::addSelectedColorTests()
     if(ui->Red->isChecked()){
         testsVector.push_back("background-color: #FF0000;");
         testCodeVector.push_back(4);
+        testColorVector.push_back(Qt::white);
     }
     if(ui->Green->isChecked()){
         testsVector.push_back("background-color: #00FF00;");
         testCodeVector.push_back(4);
+        testColorVector.push_back(Qt::white);
     }
     if(ui->Blue->isChecked()){
         testsVector.push_back("background-color: #0000FF;");
         testCodeVector.push_back(4);
+        testColorVector.push_back(Qt::white);
     }
     if(ui->Orange->isChecked()){
         testsVector.push_back("background-color: #FFB400;");
         testCodeVector.push_back(4);
+        testColorVector.push_back(Qt::white);
     }
     if(ui->White->isChecked()){
         testsVector.push_back("background-color: #FFFFFF;");
         testCodeVector.push_back(4);
+        testColorVector.push_back(Qt::white);
     }
     if(ui->Black->isChecked()){
         testsVector.push_back("background-color: #000000;");
         testCodeVector.push_back(4);
+        testColorVector.push_back(Qt::white);
     }
     if(ui->Gray50->isChecked()){
         testsVector.push_back("background-color: #7F7F7F;");
         testCodeVector.push_back(4);
+        testColorVector.push_back(Qt::white);
     }
 
     //Gradient
     if(ui->RedGradient->isChecked()){
+        testsVector.push_back("background-color: #FF0000;");
         testCodeVector.push_back(5);
         testColorVector.push_back(QColor("#FF0000"));
     }
 
     if(ui->GreenGradient->isChecked()){
+        testsVector.push_back("background-color: #FF0000;");
         testCodeVector.push_back(5);
         testColorVector.push_back(QColor("#00FF00"));
     }
 
     if(ui->BlueGradient->isChecked()){
+        testsVector.push_back("background-color: #FF0000;");
         testCodeVector.push_back(5);
         testColorVector.push_back(QColor("#0000FF"));
     }
 
     if(ui->OrangeGradient->isChecked()){
+        testsVector.push_back("background-color: #FF0000;");
         testCodeVector.push_back(5);
         testColorVector.push_back(QColor("#FFB400"));
     }
 
     if(ui->GrayGradient->isChecked()){
+        testsVector.push_back("background-color: #FF0000;");
         testCodeVector.push_back(5);
         testColorVector.push_back(Qt::gray);
     }

@@ -5,6 +5,8 @@
 #include <QWidget>
 #include <QKeyEvent>
 #include <QColor>
+#include <QLabel>
+#include <QPushButton>
 #include <QPixmap>
 
 
@@ -22,8 +24,6 @@ public:
     const char *getFirstElement();
     void paletteTest(const char*);
 
-    void deleteAllWidgets();
-
     void GradientTest(QColor);
 
 protected:
@@ -34,13 +34,10 @@ private:
     std::vector<const char*> testsVector{};
     std::vector<uint8_t> testCodeVector{};
     std::vector<QColor> testColorVector{};
-
-
     int index_ = 0;
+    QPushButton *backButton;
     QScreen *screen;
-
-private:
-    void setImage(const QPixmap &pixmap);
+    QLabel *label;
 };
 
 #endif // TESTWINDOW_H

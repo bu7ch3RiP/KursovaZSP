@@ -14,12 +14,11 @@
 ColorTest::ColorTest(QWidget *parent)
     : QWidget{parent}
 {
-    // Створення кнопки "Повернутися"
-    QPushButton *backButton = new QPushButton("X", this);
+    label = nullptr;
+    backButton = new QPushButton("X", this);
     backButton->setStyleSheet("background-color: #ff00ff;");
     connect(backButton, &QPushButton::clicked, this, &QWidget::close);
 
-    // Розміщення кнопки на вікні
     screen = QGuiApplication::primaryScreen();
 
     backButton->setGeometry(QRect(QPoint(screen->geometry().width()-35, 5), QSize(30, 30)));
@@ -48,73 +47,76 @@ const char *ColorTest::getFirstElement()
 
 void ColorTest::paletteTest(const char *path)
 {
-    // Load the image to be displayed
+    QRect screenGeometry = QGuiApplication::primaryScreen()->geometry();
+    QSize screenSize = screenGeometry.size();
     QPixmap pixmap(path);
-
-    // Create a label to hold the image
-    QLabel *label = new QLabel(this);
-    label->setPixmap(pixmap);
-
-    // Resize the label to fill the widget
-    label->setFixedHeight(screen->geometry().height());
-    label->setFixedWidth(screen->geometry().width());
-
-    //label->setScaledContents(true);
-
-    // Set the widget to be the top-level widget and display it in full screen
-    //setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
-
+    label->setPixmap(pixmap.scaled(screenSize));
+    label->setGeometry(QRect(QPoint(0, 0), screenSize));
+    label->showFullScreen();
+    backButton->raise();
 }
-
-void ColorTest::deleteAllWidgets()
-{
-    QLayoutItem* child;
-    while ((child = layout()->takeAt(0)) != nullptr) {
-        delete child->widget();
-        delete child;
-    }
-}
-
 
 void ColorTest::GradientTest(QColor color)
 {
+    setStyleSheet("QWidget {"
+                  "background-color: palette(Window);"
+                  "color: palette(WindowText);"
+                  "}");
+    QPalette defaultPalette = QApplication::palette();
+    setPalette(defaultPalette);
+
     QLinearGradient gradient(0, 0, screen->geometry().width(), screen->geometry().height());
-    gradient.setColorAt(0, Qt::black);
+    gradient.setColorAt(0, QColor(0, 0, 0, 0));
     gradient.setColorAt(1, color);
 
     // Set the widget's background to the gradient
-    setAutoFillBackground(true);
+    setAutoFillBackground(false);
     QPalette pal = palette();
-    pal.setBrush(backgroundRole(), QBrush(gradient));
+    pal.setBrush(QPalette::Window, QBrush(gradient));
     setPalette(pal);
+
 }
 
 void ColorTest::keyPressEvent(QKeyEvent *event)
 {
+    if(label != nullptr){
+        delete label;
+        label = nullptr;
+    }
     switch (event->key()) {
     case Qt::Key_Left:
         index_ = (index_ - 1 + testCodeVector.size()) % testCodeVector.size();
-        if(testCodeVector[index_] == 4)
+        if(testCodeVector[index_] == 4){
+
             setStyleSheet(testsVector[index_]);
-        if(testCodeVector[index_] == 5)
+        }
+        if(testCodeVector[index_] == 5){
             GradientTest(testColorVector[index_]);
+        }
         if(testCodeVector[index_] == 6){
+            label = new QLabel(this);
             paletteTest(":/color/palette/pictures/Palette.png");
         }
         if(testCodeVector[index_] == 7){
+            label = new QLabel(this);
             paletteTest(":/color/palette/pictures/Palette180.png");
         }
         break;
     case Qt::Key_Right:
         index_ = (index_ + 1) % testCodeVector.size();
-        if(testCodeVector[index_] == 4)
+        qDebug() << testColorVector[index_].name();
+        if(testCodeVector[index_] == 4){
             this->setStyleSheet(testsVector[index_]);
-        if(testCodeVector[index_] == 5)
+        }
+        if(testCodeVector[index_] == 5){
             GradientTest(testColorVector[index_]);
+        }
         if(testCodeVector[index_] == 6){
+            label = new QLabel(this);
             paletteTest(":/color/palette/pictures/Palette.png");
         }
         if(testCodeVector[index_] == 7){
+            label = new QLabel(this);
             paletteTest(":/color/palette/pictures/Palette180.png");
         }
         break;
@@ -123,25 +125,3 @@ void ColorTest::keyPressEvent(QKeyEvent *event)
         break;
     }
 }
-
-//void TestWindow::setImage(const QPixmap &pixmap)
-//{
-//    // Set background color to black
-//    QPalette pal = palette();
-//    pal.setColor(QPalette::Window, Qt::black);
-//    setAutoFillBackground(true);
-//    setPalette(pal);
-//
-//    // Scale image to fit the widget size
-//    QPixmap scaledPixmap = pixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-//
-//    // Set the image label
-//    if (!imageLabel) {
-//        imageLabel = new QLabel(this);
-//    }
-//    imageLabel->setPixmap(scaledPixmap);
-//    imageLabel->setAlignment(Qt::AlignCenter);
-//}
-
-
-
