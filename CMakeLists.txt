@@ -15,14 +15,12 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
-        testwindow.cpp
-        gridwidget.cpp
-        tablewidget.cpp
-        readtest.cpp
-        readtest.h
-        tablewidget.h
-        gridwidget.h
-        testwindow.h
+        color_test.cpp
+        grid_test.cpp
+        read_test.cpp
+        read_test.h
+        grid_test.h
+        color_test.h
         mainwindow.h
         mainwindow.ui
 )

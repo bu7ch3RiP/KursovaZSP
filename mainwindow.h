@@ -5,10 +5,9 @@
 #include <QMainWindow>
 #include <vector>
 #include <QColor>
-#include "testwindow.h"
-#include "gridwidget.h"
-#include "tablewidget.h"
-#include "readtest.h"
+#include "color_test.h"
+#include "grid_test.h"
+#include "read_test.h"
 
 
 
@@ -49,8 +48,7 @@ private:
     std::vector<uint8_t> testCodeVector{};
     std::vector<QColor> testColorVector{};
     ColorTest *colorTest = nullptr;
-    GridWidget *gridTest = nullptr;
-    TableWidget *tableWidget = nullptr;
+    GridTest *gridTest = nullptr;
     ReadTest *readTest = nullptr;
 
 private:

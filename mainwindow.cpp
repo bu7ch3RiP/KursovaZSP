@@ -29,7 +29,7 @@ void MainWindow::createTestWindow()
     //TestWindow *newWindow = new TestWindow();
     if(isOneTest){
         if(ui->stackedWidget->currentIndex() == 1){
-            gridTest = new GridWidget();
+            gridTest = new GridTest();
             gridTest->setTestCodeVector(getCodeVector());
             gridTest->setTestColorVector(getColorVector());
             gridTest->setColor(gridTest->getFirstColor());

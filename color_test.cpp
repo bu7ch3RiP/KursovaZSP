@@ -1,4 +1,4 @@
-#include "testwindow.h"
+#include "color_test.h"
 #include <QtWidgets>
 #include <QPushButton>
 #include <QGuiApplication>

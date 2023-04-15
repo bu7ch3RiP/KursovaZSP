@@ -1,5 +1,5 @@
 
-#include "gridwidget.h"
+#include "grid_test.h"
 
 #include <QtWidgets>
 #include <QPushButton>
@@ -15,7 +15,7 @@
 
 #include <unordered_map>
 
-GridWidget::GridWidget(QWidget *parent)
+GridTest::GridTest(QWidget *parent)
     : QWidget{parent}
 {
     // Створення кнопки "Повернутися"
@@ -31,7 +31,7 @@ GridWidget::GridWidget(QWidget *parent)
     setFocusPolicy( Qt::StrongFocus );
 }
 
-void GridWidget::paintEvent(QPaintEvent *event)
+void GridTest::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
     QPainter painter(this);
@@ -55,29 +55,29 @@ void GridWidget::paintEvent(QPaintEvent *event)
     }
 }
 
-void GridWidget::setTestColorVector(std::vector<QColor> color)
+void GridTest::setTestColorVector(std::vector<QColor> color)
 {
     testColorVector = color;
 }
 
-void GridWidget::setTestCodeVector(std::vector<uint8_t> code)
+void GridTest::setTestCodeVector(std::vector<uint8_t> code)
 {
     testCodeVector = code;
 }
 
-QColor GridWidget::getFirstColor()
+QColor GridTest::getFirstColor()
 {
     return testColorVector[0];
 }
 
-void GridWidget::setColor(const QColor &color)
+void GridTest::setColor(const QColor &color)
 {
     m_color = color;
     update();
 }
 
 
-void GridWidget::keyPressEvent(QKeyEvent *event)
+void GridTest::keyPressEvent(QKeyEvent *event)
 {
     std::unordered_map<uint8_t, QColor> mColor = {{2, Qt::black}, {3, Qt::white}};
     QPalette palette = this->palette();

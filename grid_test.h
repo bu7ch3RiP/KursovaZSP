@@ -6,11 +6,11 @@
 #include <QWidget>
 
 
-class GridWidget : public QWidget
+class GridTest : public QWidget
 {
     Q_OBJECT
 public:
-    explicit GridWidget(QWidget *parent = nullptr);
+    explicit GridTest(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event) override;
 
     void setTestColorVector( std::vector<QColor> );
