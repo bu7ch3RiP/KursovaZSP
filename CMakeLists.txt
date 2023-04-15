@@ -18,6 +18,8 @@ set(PROJECT_SOURCES
         testwindow.cpp
         gridwidget.cpp
         tablewidget.cpp
+        readtest.cpp
+        readtest.h
         tablewidget.h
         gridwidget.h
         testwindow.h

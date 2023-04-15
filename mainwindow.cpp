@@ -35,11 +35,17 @@ void MainWindow::createTestWindow()
             gridTest->setColor(gridTest->getFirstColor());
             gridTest->showFullScreen();
         }else if (ui->stackedWidget->currentIndex() == 2){
-            newWindow = new TestWindow();
-            newWindow->setVectorValues(getVector());
-            newWindow->setCodeVector(getCodeVector());
-            newWindow->setColorVector(getColorVector());
-            newWindow->showFullScreen();
+            colorTest = new ColorTest();
+            colorTest->setVectorValues(getVector());
+            colorTest->setCodeVector(getCodeVector());
+            colorTest->setColorVector(getColorVector());
+            colorTest->showFullScreen();
+        }else if (ui->stackedWidget->currentIndex() == 3){
+            readTest = new ReadTest();
+            readTest->setTestCodeVector(getCodeVector());
+            readTest->setTestColorVector(getColorVector());
+            readTest->setColor(readTest->getFirstColor());
+            readTest->showFullScreen();
         }
     }
 
@@ -50,16 +56,18 @@ void MainWindow::createTestWindow()
     case 3:
         break;
     case 4:
-        newWindow->setStyleSheet(newWindow->getFirstElement());
+        colorTest->setStyleSheet(colorTest->getFirstElement());
         break;
     case 5:
-        newWindow->GradientTest(getFirstColorElement());
+        colorTest->GradientTest(getFirstColorElement());
         break;
     case 6:
-        newWindow->paletteTest(":/color/palette/pictures/Palette.png");
+        colorTest->paletteTest(":/color/palette/pictures/Palette.png");
         break;
     case 7:
-        newWindow->paletteTest(":/color/palette/pictures/Palette180.png");
+        colorTest->paletteTest(":/color/palette/pictures/Palette180.png");
+        break;
+    case 8:
         break;
     }
     // Показ вікна на повний екран
@@ -132,6 +140,7 @@ void MainWindow::on_actionClear_All_triggered()
 
 void MainWindow::on_RunTests_clicked()
 {
+
     isOneTest = true;
 
     if(ui->stackedWidget->currentIndex() == 1)
@@ -155,6 +164,12 @@ void MainWindow::addSelectedColorTests()
 
     if(!testCodeVector.empty())
         testCodeVector.clear();
+
+    if(!testColorVector.empty())
+        testColorVector.clear();
+
+    if(!testsVector.empty())
+        testsVector.clear();
 
     //Solid Tests
     if(ui->Red->isChecked()){
@@ -223,11 +238,11 @@ void MainWindow::addSelectedColorTests()
 
 void MainWindow::addSelectedGridTests()
 {
-
-
     if(!testCodeVector.empty())
         testCodeVector.clear();
 
+    if(!testColorVector.empty())
+        testColorVector.clear();
 
     //White background
     if(ui->BlackGrid->isChecked())
@@ -304,6 +319,9 @@ void MainWindow::addReadTests()
 {
     if(!testCodeVector.empty())
         testCodeVector.clear();
+
+    if(!testColorVector.empty())
+        testColorVector.clear();
 
     if(ui->WhiteText->isChecked()){
         testCodeVector.push_back(8);

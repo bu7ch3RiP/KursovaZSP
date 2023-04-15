@@ -17,6 +17,7 @@ public:
     void setTestCodeVector(std::vector<uint8_t> );
     QColor getFirstColor();
 
+
 signals:
 
 public slots:

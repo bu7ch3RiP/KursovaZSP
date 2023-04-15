@@ -11,7 +11,7 @@
 #include <QKeyEvent>
 #include <QLinearGradient>
 
-TestWindow::TestWindow(QWidget *parent)
+ColorTest::ColorTest(QWidget *parent)
     : QWidget{parent}
 {
     // Створення кнопки "Повернутися"
@@ -27,25 +27,25 @@ TestWindow::TestWindow(QWidget *parent)
     setFocusPolicy( Qt::StrongFocus );
 }
 
-void TestWindow::setVectorValues(std::vector<const char *> v)
+void ColorTest::setVectorValues(std::vector<const char *> v)
 {
     this->testsVector = v;
 }
 
-void TestWindow::setCodeVector(std::vector<uint8_t> v){
+void ColorTest::setCodeVector(std::vector<uint8_t> v){
     this->testCodeVector = v;
 }
 
-void TestWindow::setColorVector(std::vector<QColor> v){
+void ColorTest::setColorVector(std::vector<QColor> v){
     this->testColorVector = v;
 }
 
-const char *TestWindow::getFirstElement()
+const char *ColorTest::getFirstElement()
 {
     return testsVector[0];
 }
 
-void TestWindow::paletteTest(const char *path)
+void ColorTest::paletteTest(const char *path)
 {
     // Create a new widget
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -67,7 +67,7 @@ void TestWindow::paletteTest(const char *path)
 
 }
 
-void TestWindow::deleteAllWidgets()
+void ColorTest::deleteAllWidgets()
 {
     QLayoutItem* child;
     while ((child = layout()->takeAt(0)) != nullptr) {
@@ -77,7 +77,7 @@ void TestWindow::deleteAllWidgets()
 }
 
 
-void TestWindow::GradientTest(QColor color)
+void ColorTest::GradientTest(QColor color)
 {
     QScreen *screen = QGuiApplication::primaryScreen();
     QLinearGradient gradient(0, 0, screen->geometry().width(), screen->geometry().height());
@@ -91,7 +91,7 @@ void TestWindow::GradientTest(QColor color)
     setPalette(pal);
 }
 
-void TestWindow::keyPressEvent(QKeyEvent *event)
+void ColorTest::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
     case Qt::Key_Left:

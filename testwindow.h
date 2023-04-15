@@ -7,11 +7,11 @@
 #include <QColor>
 #include <QPixmap>
 
-class TestWindow : public QWidget
+class ColorTest : public QWidget
 {
     Q_OBJECT
 public:
-    explicit TestWindow(QWidget *parent = nullptr);
+    explicit ColorTest(QWidget *parent = nullptr);
 
     void setVectorValues(std::vector<const char*>);
     void setCodeVector(std::vector<uint8_t>);

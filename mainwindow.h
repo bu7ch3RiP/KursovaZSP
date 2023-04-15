@@ -8,6 +8,7 @@
 #include "testwindow.h"
 #include "gridwidget.h"
 #include "tablewidget.h"
+#include "readtest.h"
 
 
 
@@ -47,9 +48,10 @@ private:
     std::vector<const char*> testsVector{};
     std::vector<uint8_t> testCodeVector{};
     std::vector<QColor> testColorVector{};
-    TestWindow *newWindow;
-    GridWidget *gridTest;
-    TableWidget *tableWidget;
+    ColorTest *colorTest = nullptr;
+    GridWidget *gridTest = nullptr;
+    TableWidget *tableWidget = nullptr;
+    ReadTest *readTest = nullptr;
 
 private:
     void addSelectedColorTests();
