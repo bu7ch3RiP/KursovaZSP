@@ -7,6 +7,8 @@
 #include <QColor>
 #include <QPixmap>
 
+
+
 class ColorTest : public QWidget
 {
     Q_OBJECT
@@ -32,7 +34,10 @@ private:
     std::vector<const char*> testsVector{};
     std::vector<uint8_t> testCodeVector{};
     std::vector<QColor> testColorVector{};
+
+
     int index_ = 0;
+    QScreen *screen;
 
 private:
     void setImage(const QPixmap &pixmap);

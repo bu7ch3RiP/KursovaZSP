@@ -16,7 +16,7 @@ public:
     void setTestColorVector( std::vector<QColor> );
     void setTestCodeVector(std::vector<uint8_t> );
     QColor getFirstColor();
-
+    void setFirstGrid(QColor);
 
 signals:
 

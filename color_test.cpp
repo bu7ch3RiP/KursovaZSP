@@ -20,7 +20,8 @@ ColorTest::ColorTest(QWidget *parent)
     connect(backButton, &QPushButton::clicked, this, &QWidget::close);
 
     // Розміщення кнопки на вікні
-    QScreen *screen = QGuiApplication::primaryScreen();
+    screen = QGuiApplication::primaryScreen();
+
     backButton->setGeometry(QRect(QPoint(screen->geometry().width()-35, 5), QSize(30, 30)));
 
     index_ = 0;
@@ -47,8 +48,6 @@ const char *ColorTest::getFirstElement()
 
 void ColorTest::paletteTest(const char *path)
 {
-    // Create a new widget
-    QScreen *screen = QGuiApplication::primaryScreen();
     // Load the image to be displayed
     QPixmap pixmap(path);
 
@@ -79,7 +78,6 @@ void ColorTest::deleteAllWidgets()
 
 void ColorTest::GradientTest(QColor color)
 {
-    QScreen *screen = QGuiApplication::primaryScreen();
     QLinearGradient gradient(0, 0, screen->geometry().width(), screen->geometry().height());
     gradient.setColorAt(0, Qt::black);
     gradient.setColorAt(1, color);

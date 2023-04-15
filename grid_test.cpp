@@ -70,6 +70,16 @@ QColor GridTest::getFirstColor()
     return testColorVector[0];
 }
 
+void GridTest::setFirstGrid(QColor color)
+{
+    std::unordered_map<uint8_t, QColor> mColor = {{2, Qt::black}, {3, Qt::white}};
+    QPalette palette = this->palette();
+    palette.setColor(QPalette::Window, mColor[testCodeVector[0]]);
+    this->setAutoFillBackground(true);
+    this->setPalette(palette);
+    setColor(testColorVector[0]);
+}
+
 void GridTest::setColor(const QColor &color)
 {
     m_color = color;
@@ -101,23 +111,5 @@ void GridTest::keyPressEvent(QKeyEvent *event)
         QWidget::keyPressEvent(event);
         break;
     }
-
-
-    //switch (event->key()) {
-    //case Qt::Key_Left:
-    //    setColor(Qt::red);
-    //    break;
-    //case Qt::Key_Right:
-    //    setColor(Qt::green);
-    //    break;
-    //case Qt::Key_Up:
-    //    setColor(Qt::blue);
-    //    break;
-    //case Qt::Key_Down:
-    //    setColor(Qt::black);
-    //    break;
-    //default:
-    //    QWidget::keyPressEvent(event);
-    //}
 }
 
