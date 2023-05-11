@@ -142,6 +142,8 @@ void MainWindow::on_RunTests_clicked()
 {
     isOneTest = true;
 
+
+
     if(ui->stackedWidget->currentIndex() == 1)
         addSelectedGridTests();
 
@@ -360,6 +362,56 @@ void MainWindow::addReadTests()
         testColorVector.push_back(Qt::yellow);
     }
 
+
+}
+
+void MainWindow::addCalibrationTests()
+{
+    //Focus test
+    if(ui->WhitePattern->isChecked()){
+        testFocusVector.push_back(0);
+    }
+    if(ui->BlackPattern->isChecked()){
+        testFocusVector.push_back(0);
+    }
+    if(ui->Sharpness->isChecked()){
+        testFocusVector.push_back(0);
+    }
+    if(ui->Dots->isChecked()){
+        // Dots
+        testFocusVector.push_back(1);
+        testCodeVector.push_back(1);
+    }
+    if(ui->VerticalLines->isChecked()){
+        // Vertical lines
+        testFocusVector.push_back(2);
+        testCodeVector.push_back(1);
+    }
+    if(ui->HorisontalLines->isChecked()){
+        // Horisontal lines
+        testFocusVector.push_back(3);
+        testCodeVector.push_back(1);
+    }
+
+    //Calibration test
+    if(ui->LCDCalibration->isChecked()){
+        testFocusVector.push_back(0);
+    }
+    if(ui->Brightness->isChecked()){
+        testFocusVector.push_back(0);
+    }
+    if(ui->Scope->isChecked()){
+        testFocusVector.push_back(0);
+    }
+    if(ui->Gamma->isChecked()){
+        testFocusVector.push_back(0);
+    }
+    if(ui->Convergence->isChecked()){
+        testFocusVector.push_back(0);
+    }
+    if(ui->ScreenSize->isChecked()){
+        testFocusVector.push_back(0);
+    }
 }
 
 uint8_t MainWindow::getFirstCodeElement()

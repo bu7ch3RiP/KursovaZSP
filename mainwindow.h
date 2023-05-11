@@ -47,6 +47,7 @@ private:
     std::vector<const char*> testsVector{};
     std::vector<uint8_t> testCodeVector{};
     std::vector<QColor> testColorVector{};
+    std::vector<uint8_t> testFocusVector{};
     ColorTest *colorTest = nullptr;
     GridTest *gridTest = nullptr;
     ReadTest *readTest = nullptr;
@@ -55,6 +56,7 @@ private:
     void addSelectedColorTests();
     void addSelectedGridTests();
     void addReadTests();
+    void addCalibrationTests();
     uint8_t getFirstCodeElement();
     QColor getFirstColorElement();
 };

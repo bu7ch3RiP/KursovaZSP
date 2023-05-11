@@ -1,0 +1,25 @@
+Focus - 1
+Grid Black - 2
+Grid White - 3
+Solid test - 4
+Gradient - 5
+Color palete - 6
+Color palete - 7
+Read Test - 8
+Calibration - 9
+
+Calibration tests
+LCDCalibration
+Brightness
+Scope
+Gamma
+Convergence
+ScreenSize
+
+FOCUS TESTS
+WhitePattern
+BlackPattern
+Sharpness
+Dots
+VerticalLines
+HorisontalLines

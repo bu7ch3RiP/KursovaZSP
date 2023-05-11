@@ -14,9 +14,6 @@
 #include <QKeyEvent>
 #include <QLinearGradient>
 
-#include <iostream>
-
-
 ReadTest::ReadTest(QWidget *parent)
     : QWidget{parent}
 {

@@ -18,6 +18,8 @@ set(PROJECT_SOURCES
         color_test.cpp
         grid_test.cpp
         read_test.cpp
+        calibration_focus_test.cpp
+        calibration_focus_test.h
         read_test.h
         grid_test.h
         color_test.h
