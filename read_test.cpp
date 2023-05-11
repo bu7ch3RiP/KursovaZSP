@@ -14,6 +14,8 @@
 #include <QKeyEvent>
 #include <QLinearGradient>
 
+#include <iostream>
+
 
 ReadTest::ReadTest(QWidget *parent)
     : QWidget{parent}
@@ -71,9 +73,11 @@ void ReadTest::paintEvent(QPaintEvent *event){
 
     QScreen *screen = QGuiApplication::primaryScreen();
 
+    QString can_you_read_text = "Can you read text?";
+    long long text_length = (can_you_read_text.length() + 15) * 4;
 
-    int rowCount = 70;
-    int colCount = 15;
+    int rowCount = screen->geometry().height() / 15;
+    int colCount = screen->geometry().width() / text_length;
     int cellWidth = screen->geometry().width() / colCount;
     int cellHeight = screen->geometry().height() / rowCount;
 
