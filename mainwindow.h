@@ -2,14 +2,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <vector>
 #include <QColor>
+#include <QMainWindow>
+#include "calibration_focus_test.h"
 #include "color_test.h"
 #include "grid_test.h"
 #include "read_test.h"
-
-
+#include <vector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,6 +27,7 @@ public:
     std::vector<const char*> getVector();
     std::vector<uint8_t> getCodeVector();
     std::vector<QColor> getColorVector();
+    std::vector<uint8_t> getFocusVector();
 
 protected:
 
@@ -51,6 +51,7 @@ private:
     ColorTest *colorTest = nullptr;
     GridTest *gridTest = nullptr;
     ReadTest *readTest = nullptr;
+    CalibrationFocusTest *cf_test = nullptr;
 
 private:
     void addSelectedColorTests();
@@ -59,6 +60,8 @@ private:
     void addCalibrationTests();
     uint8_t getFirstCodeElement();
     QColor getFirstColorElement();
+
+    void clearAllVectors();
 };
 
 #endif // MAINWINDOW_H

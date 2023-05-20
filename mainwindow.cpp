@@ -28,19 +28,25 @@ void MainWindow::createTestWindow()
     // Створення нового вікна
     //TestWindow *newWindow = new TestWindow();
     if(isOneTest){
-        if(ui->stackedWidget->currentIndex() == 1){
+        if (ui->stackedWidget->currentIndex() == 0) {
+            cf_test = new CalibrationFocusTest();
+            cf_test->setTestCodeVector(getCodeVector());
+            cf_test->setTestFocusVector(getFocusVector());
+            cf_test->setUpTest();
+            cf_test->showFullScreen();
+        } else if (ui->stackedWidget->currentIndex() == 1) {
             gridTest = new GridTest();
             gridTest->setTestCodeVector(getCodeVector());
             gridTest->setTestColorVector(getColorVector());
             gridTest->setFirstGrid(gridTest->getFirstColor());
             gridTest->showFullScreen();
-        }else if (ui->stackedWidget->currentIndex() == 2){
+        } else if (ui->stackedWidget->currentIndex() == 2) {
             colorTest = new ColorTest();
             colorTest->setVectorValues(getVector());
             colorTest->setCodeVector(getCodeVector());
             colorTest->setColorVector(getColorVector());
             colorTest->showFullScreen();
-        }else if (ui->stackedWidget->currentIndex() == 3){
+        } else if (ui->stackedWidget->currentIndex() == 3) {
             readTest = new ReadTest();
             readTest->setTestCodeVector(getCodeVector());
             readTest->setTestColorVector(getColorVector());
@@ -80,6 +86,11 @@ void MainWindow::createTestWindow()
 
 std::vector<uint8_t> MainWindow::getCodeVector(){return testCodeVector;}
 std::vector<QColor> MainWindow::getColorVector(){return testColorVector;}
+
+std::vector<uint8_t> MainWindow::getFocusVector()
+{
+    return testFocusVector;
+}
 
 std::vector<const char *> MainWindow::getVector()
 {
@@ -142,9 +153,10 @@ void MainWindow::on_RunTests_clicked()
 {
     isOneTest = true;
 
+    if (ui->stackedWidget->currentIndex() == 0)
+        addCalibrationTests();
 
-
-    if(ui->stackedWidget->currentIndex() == 1)
+    if (ui->stackedWidget->currentIndex() == 1)
         addSelectedGridTests();
 
     if(ui->stackedWidget->currentIndex() == 2)
@@ -158,15 +170,7 @@ void MainWindow::on_RunTests_clicked()
 
 void MainWindow::addSelectedColorTests()
 {
-
-    if(!testCodeVector.empty())
-        testCodeVector.clear();
-
-    if(!testColorVector.empty())
-        testColorVector.clear();
-
-    if(!testsVector.empty())
-        testsVector.clear();
+    clearAllVectors();
 
     //Solid Tests
     if(ui->Red->isChecked()){
@@ -247,11 +251,7 @@ void MainWindow::addSelectedColorTests()
 
 void MainWindow::addSelectedGridTests()
 {
-    if(!testCodeVector.empty())
-        testCodeVector.clear();
-
-    if(!testColorVector.empty())
-        testColorVector.clear();
+    clearAllVectors();
 
     //White background
     if(ui->BlackGrid->isChecked())
@@ -326,11 +326,7 @@ void MainWindow::addSelectedGridTests()
 
 void MainWindow::addReadTests()
 {
-    if(!testCodeVector.empty())
-        testCodeVector.clear();
-
-    if(!testColorVector.empty())
-        testColorVector.clear();
+    clearAllVectors();
 
     if(ui->WhiteText->isChecked()){
         testCodeVector.push_back(8);
@@ -367,6 +363,7 @@ void MainWindow::addReadTests()
 
 void MainWindow::addCalibrationTests()
 {
+    clearAllVectors();
     //Focus test
     if(ui->WhitePattern->isChecked()){
         testFocusVector.push_back(0);
@@ -424,5 +421,14 @@ QColor MainWindow::getFirstColorElement()
     return testColorVector[0];
 }
 
-
-
+void MainWindow::clearAllVectors()
+{
+    if (!testsVector.empty())
+        testsVector.clear();
+    if (!testCodeVector.empty())
+        testCodeVector.clear();
+    if (!testColorVector.empty())
+        testColorVector.clear();
+    if (!testFocusVector.empty())
+        testFocusVector.clear();
+}
