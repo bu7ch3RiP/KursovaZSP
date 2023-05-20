@@ -12,6 +12,14 @@
 #include <QKeyEvent>
 #include <QLinearGradient>
 
+std::unordered_map<uint8_t, const char *> calib_focus_test_map
+    = {{4, ":/color/palette/pictures/LCD_Calibration.png"},
+       {5, ":/color/palette/pictures/BrightnessAndContrast.png"},
+       {6, ":/color/palette/pictures/Gamma.png"},
+       {7, ":/color/palette/pictures/WhitePattern.png"},
+       {8, ":/color/palette/pictures/BlackPattern.png"},
+       {9, ":/color/palette/pictures/Sharpness.png"}};
+
 CalibrationFocusTest::CalibrationFocusTest(QWidget *parent)
     : QWidget{parent}
 {
@@ -65,6 +73,9 @@ void CalibrationFocusTest::paintEvent(QPaintEvent *event)
             x += spacing;
         }
     } break;
+    case DrawType::kPicture:
+        showCalibrationTest();
+        break;
     }
 }
 
@@ -92,7 +103,12 @@ void CalibrationFocusTest::setUpTest()
 {
     if (testCodeVector[0] == 1) {
         switch (testFocusVector[0]) {
-        case 0:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
             draw_state = DrawType::kPicture;
             break;
         case 1:
@@ -106,4 +122,16 @@ void CalibrationFocusTest::setUpTest()
             break;
         }
     }
+}
+
+void CalibrationFocusTest::showCalibrationTest()
+{
+    label = new QLabel(this);
+    QRect screenGeometry = QGuiApplication::primaryScreen()->geometry();
+    QSize screenSize = screenGeometry.size();
+    QPixmap pixmap(calib_focus_test_map[testFocusVector[index_]]);
+    label->setPixmap(pixmap.scaled(screenSize));
+    label->setGeometry(QRect(QPoint(0, 0), screenSize));
+    label->showFullScreen();
+    backButton->raise();
 }

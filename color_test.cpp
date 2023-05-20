@@ -47,6 +47,7 @@ const char *ColorTest::getFirstElement()
 
 void ColorTest::paletteTest(const char *path)
 {
+    label = new QLabel(this);
     QRect screenGeometry = QGuiApplication::primaryScreen()->geometry();
     QSize screenSize = screenGeometry.size();
     QPixmap pixmap(path);
@@ -74,7 +75,6 @@ void ColorTest::GradientTest(QColor color)
     QPalette pal = palette();
     pal.setBrush(QPalette::Window, QBrush(gradient));
     setPalette(pal);
-
 }
 
 void ColorTest::keyPressEvent(QKeyEvent *event)
@@ -87,24 +87,20 @@ void ColorTest::keyPressEvent(QKeyEvent *event)
     case Qt::Key_Left:
         index_ = (index_ - 1 + testCodeVector.size()) % testCodeVector.size();
         if(testCodeVector[index_] == 4){
-
             setStyleSheet(testsVector[index_]);
         }
         if(testCodeVector[index_] == 5){
             GradientTest(testColorVector[index_]);
         }
         if(testCodeVector[index_] == 6){
-            label = new QLabel(this);
             paletteTest(":/color/palette/pictures/Palette.png");
         }
         if(testCodeVector[index_] == 7){
-            label = new QLabel(this);
             paletteTest(":/color/palette/pictures/Palette180.png");
         }
         break;
     case Qt::Key_Right:
         index_ = (index_ + 1) % testCodeVector.size();
-        qDebug() << testColorVector[index_].name();
         if(testCodeVector[index_] == 4){
             this->setStyleSheet(testsVector[index_]);
         }
@@ -112,11 +108,9 @@ void ColorTest::keyPressEvent(QKeyEvent *event)
             GradientTest(testColorVector[index_]);
         }
         if(testCodeVector[index_] == 6){
-            label = new QLabel(this);
             paletteTest(":/color/palette/pictures/Palette.png");
         }
         if(testCodeVector[index_] == 7){
-            label = new QLabel(this);
             paletteTest(":/color/palette/pictures/Palette180.png");
         }
         break;

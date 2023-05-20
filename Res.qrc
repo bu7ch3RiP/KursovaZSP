@@ -2,5 +2,11 @@
     <qresource prefix="/color/palette">
         <file>pictures/Palette.png</file>
         <file>pictures/Palette180.png</file>
+        <file>pictures/LCD_Calibration.png</file>
+        <file>pictures/BrightnessAndContrast.png</file>
+        <file>pictures/Gamma.png</file>
+        <file>pictures/WhitePattern.png</file>
+        <file>pictures/BlackPattern.png</file>
+        <file>pictures/Sharpness.png</file>
     </qresource>
 </RCC>

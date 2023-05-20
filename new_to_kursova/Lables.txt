@@ -1,4 +1,4 @@
-Focus - 1
+FocusAndCalibration - 1
 Grid Black - 2
 Grid White - 3
 Solid test - 4
@@ -6,20 +6,24 @@ Gradient - 5
 Color palete - 6
 Color palete - 7
 Read Test - 8
-Calibration - 9
 
+--------------------------------------------------------
 Calibration tests
-LCDCalibration
-Brightness
+LCDCalibration - 4
+Brightness - 5
 Scope
-Gamma
-Convergence
+Gamma - 6
+Convergence 
 ScreenSize
 
 FOCUS TESTS
-WhitePattern
-BlackPattern
-Sharpness
-Dots
-VerticalLines
-HorisontalLines
+WhitePattern - 7
+BlackPattern - 8
+Sharpness - 9
+
+
+
+Dots - 1 
+VerticalLines - 2
+HorisontalLines - 3
+--------------------------------------------------------

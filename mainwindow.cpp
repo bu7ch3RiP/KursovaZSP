@@ -165,7 +165,8 @@ void MainWindow::on_RunTests_clicked()
     if(ui->stackedWidget->currentIndex() == 3)
         addReadTests();
 
-    createTestWindow();
+    if (!testCodeVector.empty())
+        createTestWindow();
 }
 
 void MainWindow::addSelectedColorTests()
@@ -242,9 +243,13 @@ void MainWindow::addSelectedColorTests()
 
     //ColorPallet
     if(ui->ColorPalette->isChecked()){
+        testsVector.push_back("background-color: #FF0000;");
+        testColorVector.push_back(Qt::black);
         testCodeVector.push_back(6);
     }
     if(ui->ColorPalette180->isChecked()){
+        testsVector.push_back("background-color: #FF0000;");
+        testColorVector.push_back(Qt::black);
         testCodeVector.push_back(7);
     }
 }
@@ -366,13 +371,16 @@ void MainWindow::addCalibrationTests()
     clearAllVectors();
     //Focus test
     if(ui->WhitePattern->isChecked()){
-        testFocusVector.push_back(0);
+        testFocusVector.push_back(7);
+        testCodeVector.push_back(1);
     }
     if(ui->BlackPattern->isChecked()){
-        testFocusVector.push_back(0);
+        testFocusVector.push_back(8);
+        testCodeVector.push_back(1);
     }
     if(ui->Sharpness->isChecked()){
-        testFocusVector.push_back(0);
+        testFocusVector.push_back(9);
+        testCodeVector.push_back(1);
     }
     if(ui->Dots->isChecked()){
         // Dots
@@ -392,22 +400,28 @@ void MainWindow::addCalibrationTests()
 
     //Calibration test
     if(ui->LCDCalibration->isChecked()){
-        testFocusVector.push_back(0);
+        testFocusVector.push_back(4);
+        testCodeVector.push_back(1);
     }
     if(ui->Brightness->isChecked()){
-        testFocusVector.push_back(0);
+        testFocusVector.push_back(5);
+        testCodeVector.push_back(1);
     }
     if(ui->Scope->isChecked()){
         testFocusVector.push_back(0);
+        testCodeVector.push_back(1);
     }
     if(ui->Gamma->isChecked()){
-        testFocusVector.push_back(0);
+        testFocusVector.push_back(6);
+        testCodeVector.push_back(1);
     }
     if(ui->Convergence->isChecked()){
         testFocusVector.push_back(0);
+        testCodeVector.push_back(1);
     }
     if(ui->ScreenSize->isChecked()){
         testFocusVector.push_back(0);
+        testCodeVector.push_back(1);
     }
 }
 

@@ -1,9 +1,10 @@
 #ifndef CALIBRATION_FOCUS_TEST_H
 #define CALIBRATION_FOCUS_TEST_H
 
-#include <QWidget>
-#include <QPushButton>
 #include <QLabel>
+#include <QPushButton>
+#include <QWidget>
+#include <unordered_map>
 
 constexpr int kDelta{3};
 constexpr int kPixelsSize{2};
@@ -34,6 +35,9 @@ private:
 
     std::vector<uint8_t> testCodeVector{};
     std::vector<uint8_t> testFocusVector{};
+
+private:
+    void showCalibrationTest();
 };
 
 #endif // CALIBRATION_FOCUS_TEST_H
