@@ -420,7 +420,7 @@ void MainWindow::addCalibrationTests()
         testCodeVector.push_back(1);
     }
     if(ui->ScreenSize->isChecked()){
-        testFocusVector.push_back(0);
+        testFocusVector.push_back(10);
         testCodeVector.push_back(1);
     }
 }

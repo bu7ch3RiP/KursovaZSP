@@ -1,16 +1,24 @@
 #include "calibration_focus_test.h"
 
-#include <QtWidgets>
-#include <QPushButton>
+#include <QFont>
+#include <QGraphicsTextItem>
+#include <QGraphicsView>
 #include <QGuiApplication>
-#include <QPainter>
-#include <QRect>
-#include <QPixmap>
-#include <QScreen>
-#include <QPaintEvent>
-#include <QVBoxLayout>
 #include <QKeyEvent>
 #include <QLinearGradient>
+#include <QPaintEvent>
+#include <QPainter>
+#include <QPen>
+#include <QPixmap>
+#include <QPushButton>
+#include <QRect>
+#include <QScreen>
+#include <QVBoxLayout>
+#include <QtWidgets>
+
+const QColor AxisColor = Qt::white; // Change coordinate system color to white
+const QColor GridColor = Qt::white; // Set grid color to black
+const QFont TextFont("Arial", 8, QFont::Bold);
 
 std::unordered_map<uint8_t, const char *> calib_focus_test_map
     = {{4, ":/color/palette/pictures/LCD_Calibration.png"},
@@ -34,7 +42,25 @@ CalibrationFocusTest::CalibrationFocusTest(QWidget *parent)
 
     index_ = 0;
     draw_state = DrawType::kNone;
+    scene = nullptr;
+    firstScreenSizeEnter = true;
     setFocusPolicy( Qt::StrongFocus );
+}
+
+CalibrationFocusTest::~CalibrationFocusTest()
+{
+    if (backButton != nullptr)
+        delete backButton;
+    if (screen != nullptr)
+        delete screen;
+    if (label != nullptr)
+        delete label;
+    if (scene != nullptr)
+        delete scene;
+    if (view != nullptr)
+        delete view;
+    if (layout != nullptr)
+        delete layout;
 }
 
 void CalibrationFocusTest::paintEvent(QPaintEvent *event)
@@ -75,6 +101,11 @@ void CalibrationFocusTest::paintEvent(QPaintEvent *event)
     } break;
     case DrawType::kPicture:
         showCalibrationTest();
+        break;
+    case DrawType::kScreenSize:
+        if (firstScreenSizeEnter)
+            screenTest();
+        firstScreenSizeEnter = false;
         break;
     }
 }
@@ -120,6 +151,9 @@ void CalibrationFocusTest::setUpTest()
         case 3:
             draw_state = DrawType::kGorizontal;
             break;
+        case 10:
+            draw_state = DrawType::kScreenSize;
+            break;
         }
     }
 }
@@ -133,5 +167,118 @@ void CalibrationFocusTest::showCalibrationTest()
     label->setPixmap(pixmap.scaled(screenSize));
     label->setGeometry(QRect(QPoint(0, 0), screenSize));
     label->showFullScreen();
+    backButton->raise();
+}
+
+void CalibrationFocusTest::drawCoordinateSystem(int screenWidth, int screenHeight)
+{
+    // Calculate the size of the coordinate system based on screen size
+    int coordWidth = screenWidth;
+    int coordHeight = screenHeight;
+
+    // Calculate the center of the coordinate system
+    int centerX = screenWidth / 2;
+    int centerY = screenHeight / 2;
+
+    // Draw the grid
+    QPen gridPen(GridColor);
+    for (int x = 0; x <= coordWidth; x += 50) {
+        scene->addLine(x, 0, x, coordHeight, gridPen);
+    }
+    for (int y = 0; y <= coordHeight; y += 50) {
+        scene->addLine(0, y, coordWidth, y, gridPen);
+    }
+
+    // Draw the x-axis
+    QPen xPen(AxisColor);
+    xPen.setWidth(2);
+    scene->addLine(centerX - coordWidth / 2, centerY, centerX + coordWidth / 2, centerY, xPen);
+    QGraphicsTextItem *textItemX = new QGraphicsTextItem("(" + QString::number(screenWidth) + ")");
+    textItemX->setDefaultTextColor(Qt::white);
+    textItemX->setFont(TextFont);
+    textItemX->setPos(centerX + coordWidth / 2 - 40, centerY - 40);
+    scene->addItem(textItemX);
+
+    // Draw the y-axis
+    QPen yPen(AxisColor);
+    yPen.setWidth(2);
+    scene->addLine(centerX, centerY - coordHeight / 2, centerX, centerY + coordHeight / 2, yPen);
+    QGraphicsTextItem *textItemY = new QGraphicsTextItem("(" + QString::number(screenHeight) + ")");
+    textItemY->setDefaultTextColor(Qt::white);
+    textItemY->setFont(TextFont);
+    textItemY->setPos(centerX - 40, centerY + coordHeight / 2 - 20);
+    scene->addItem(textItemY);
+
+    // Calculate the number of points to mark on the x-axis
+    int numPointsX = coordWidth / 50;
+    int startX = centerX - coordWidth / 2;
+
+    // Draw the points on the x-axis
+    for (int i = 0; i <= numPointsX; ++i) {
+        int x = startX + i * 50;
+        scene->addLine(x, centerY - 2, x, centerY + 2, xPen);
+        QGraphicsTextItem *textItemX = new QGraphicsTextItem(QString::number(i * 50));
+        textItemX->setDefaultTextColor(Qt::white);
+        textItemX->setFont(TextFont);
+        if (i == 0) {
+            textItemX->setPos(x, centerY + 10);
+        } else if (i % 2 == 0) {
+            textItemX->setPos(x - 10, centerY + 10);
+        } else {
+            textItemX->setPos(x - 10, centerY - 20);
+        }
+        scene->addItem(textItemX);
+    }
+
+    // Calculate the number of points to mark on the y-axis
+    int numPointsY = coordHeight / 50;
+    int startY = centerY - coordHeight / 2;
+
+    // Draw the points on the y-axis
+    for (int i = 0; i <= numPointsY; ++i) {
+        int y = startY + i * 50;
+        scene->addLine(centerX - 2, y, centerX + 2, y, yPen);
+        QGraphicsTextItem *textItemY = new QGraphicsTextItem(QString::number(i * 50));
+        textItemY->setDefaultTextColor(Qt::white);
+        textItemY->setFont(TextFont);
+        if (i == 0) {
+            textItemY->setPos(centerX - 40, y);
+        } else if (i % 2 == 0) {
+            textItemY->setPos(centerX - 40, y - 10);
+        } else {
+            textItemY->setPos(centerX + 10, y - 10);
+        }
+        scene->addItem(textItemY);
+    }
+}
+
+void CalibrationFocusTest::screenTest()
+{
+    layout = new QVBoxLayout(this);
+    setLayout(layout);
+    layout->setContentsMargins(0, 0, 0, 0); // Remove layout margins
+
+    scene = new QGraphicsScene(this);
+    scene->setBackgroundBrush(Qt::black);
+    view = new QGraphicsView(scene, this);
+    view->setRenderHint(QPainter::Antialiasing);
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setBackgroundBrush(Qt::black); // Set the background color to black
+    layout->addWidget(view);
+
+    setStyleSheet("QWidget { background-color: black; }");
+    // Get the screen size
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect screenRect = screen->geometry();
+    int screenWidth = screenRect.width();
+    int screenHeight = screenRect.height();
+
+    // Set the scene rect to match the screen size
+    scene->setSceneRect(0, 0, screenWidth, screenHeight);
+    view->setGeometry(screenRect); // Set the view's geometry to fill the entire window
+
+    // Draw the coordinate system
+    drawCoordinateSystem(screenWidth, screenHeight);
     backButton->raise();
 }
