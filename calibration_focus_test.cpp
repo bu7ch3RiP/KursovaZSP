@@ -26,7 +26,9 @@ std::unordered_map<uint8_t, const char *> calib_focus_test_map
        {6, ":/color/palette/pictures/Gamma.png"},
        {7, ":/color/palette/pictures/WhitePattern.png"},
        {8, ":/color/palette/pictures/BlackPattern.png"},
-       {9, ":/color/palette/pictures/Sharpness.png"}};
+       {9, ":/color/palette/pictures/Sharpness.png"},
+       {11, ":/color/palette/pictures/Scope.png"},
+       {12, ":/color/palette/pictures/Converage.png"}};
 
 CalibrationFocusTest::CalibrationFocusTest(QWidget *parent)
     : QWidget{parent}
@@ -38,13 +40,16 @@ CalibrationFocusTest::CalibrationFocusTest(QWidget *parent)
 
     screen = QGuiApplication::primaryScreen();
 
-    backButton->setGeometry(QRect(QPoint(screen->geometry().width()-35, 5), QSize(30, 30)));
+    backButton->setGeometry(QRect(QPoint(screen->geometry().width() - 35, 5), QSize(30, 30)));
 
     index_ = 0;
     draw_state = DrawType::kNone;
     scene = nullptr;
+    view = nullptr;
+    layout = nullptr;
     firstScreenSizeEnter = true;
-    setFocusPolicy( Qt::StrongFocus );
+    firstCalibrationTest = true;
+    setFocusPolicy(Qt::StrongFocus);
 }
 
 CalibrationFocusTest::~CalibrationFocusTest()
@@ -65,48 +70,51 @@ CalibrationFocusTest::~CalibrationFocusTest()
 
 void CalibrationFocusTest::paintEvent(QPaintEvent *event)
 {
-    QPainter painter(this);
-    switch (draw_state) {
-    case DrawType::kDots:
-        for (int y = 0; y < screen->geometry().height(); y += kDelta) {
-            for (int x = 0; x < screen->geometry().width(); x += kDelta) {
-                painter.fillRect(x, y, kPixelsSize, kPixelsSize, Qt::black);
-                painter.fillRect(x + kPixelsSize,
-                                 y + kPixelsSize,
-                                 kPixelsSize,
-                                 kPixelsSize,
-                                 Qt::black);
+    if (firstCalibrationTest) {
+        firstCalibrationTest = false;
+        QPainter painter(this);
+        switch (draw_state) {
+        case DrawType::kDots:
+            for (int y = 0; y < screen->geometry().height(); y += kDelta) {
+                for (int x = 0; x < screen->geometry().width(); x += kDelta) {
+                    painter.fillRect(x, y, kPixelsSize, kPixelsSize, Qt::black);
+                    painter.fillRect(x + kPixelsSize,
+                                     y + kPixelsSize,
+                                     kPixelsSize,
+                                     kPixelsSize,
+                                     Qt::black);
+                }
             }
-        }
-        break;
-    case DrawType::kGorizontal: {
-        painter.setPen(Qt::black);
-        int y = 0;
-        int spacing = kDelta;
+            break;
+        case DrawType::kGorizontal: {
+            painter.setPen(Qt::black);
+            int y = 0;
+            int spacing = kDelta;
 
-        while (y < screen->geometry().height()) {
-            painter.drawLine(0, y, screen->geometry().width(), y);
-            y += spacing;
-        }
-    } break;
-    case DrawType::kVertical: {
-        painter.setPen(Qt::black);
-        int x = 0;
-        int spacing = kDelta;
+            while (y < screen->geometry().height()) {
+                painter.drawLine(0, y, screen->geometry().width(), y);
+                y += spacing;
+            }
+        } break;
+        case DrawType::kVertical: {
+            painter.setPen(Qt::black);
+            int x = 0;
+            int spacing = kDelta;
 
-        while (x < screen->geometry().width()) {
-            painter.drawLine(x, 0, x, screen->geometry().height());
-            x += spacing;
+            while (x < screen->geometry().width()) {
+                painter.drawLine(x, 0, x, screen->geometry().height());
+                x += spacing;
+            }
+        } break;
+        case DrawType::kPicture:
+            showCalibrationTest();
+            break;
+        case DrawType::kScreenSize:
+            if (firstScreenSizeEnter)
+                screenTest();
+            firstScreenSizeEnter = false;
+            break;
         }
-    } break;
-    case DrawType::kPicture:
-        showCalibrationTest();
-        break;
-    case DrawType::kScreenSize:
-        if (firstScreenSizeEnter)
-            screenTest();
-        firstScreenSizeEnter = false;
-        break;
     }
 }
 
@@ -140,6 +148,8 @@ void CalibrationFocusTest::setUpTest()
         case 7:
         case 8:
         case 9:
+        case 11:
+        case 12:
             draw_state = DrawType::kPicture;
             break;
         case 1:
@@ -252,6 +262,35 @@ void CalibrationFocusTest::drawCoordinateSystem(int screenWidth, int screenHeigh
     }
 }
 
+void CalibrationFocusTest::setUpTest(uint8_t code)
+{
+    switch (code) {
+    case 1:
+        draw_state = DrawType::kDots;
+        break;
+    case 2:
+        draw_state = DrawType::kVertical;
+        break;
+    case 3:
+        draw_state = DrawType::kGorizontal;
+        break;
+    case 10:
+        firstScreenSizeEnter = true;
+        draw_state = DrawType::kScreenSize;
+        break;
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 11:
+    case 12:
+        draw_state = DrawType::kPicture;
+        break;
+    }
+}
+
 void CalibrationFocusTest::screenTest()
 {
     layout = new QVBoxLayout(this);
@@ -281,4 +320,43 @@ void CalibrationFocusTest::screenTest()
     // Draw the coordinate system
     drawCoordinateSystem(screenWidth, screenHeight);
     backButton->raise();
+}
+
+void CalibrationFocusTest::keyPressEvent(QKeyEvent *event)
+{
+    if (label != nullptr) {
+        delete label;
+        label = nullptr;
+    }
+    if (scene != nullptr) {
+        delete scene;
+        scene = nullptr;
+    }
+
+    if (view != nullptr) {
+        delete view;
+        view = nullptr;
+    }
+
+    if (layout != nullptr) {
+        delete layout;
+        layout = nullptr;
+    }
+
+    switch (event->key()) {
+    case Qt::Key_Left:
+        index_ = (index_ - 1 + testFocusVector.size()) % testFocusVector.size();
+        setUpTest(testFocusVector[index_]);
+        firstCalibrationTest = true;
+        break;
+    case Qt::Key_Right:
+        index_ = (index_ + 1) % testFocusVector.size();
+        setUpTest(testFocusVector[index_]);
+        firstCalibrationTest = true;
+        break;
+    default:
+        QWidget::keyPressEvent(event);
+        firstCalibrationTest = true;
+        break;
+    }
 }

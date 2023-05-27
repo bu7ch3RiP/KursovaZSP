@@ -8,5 +8,7 @@
         <file>pictures/WhitePattern.png</file>
         <file>pictures/BlackPattern.png</file>
         <file>pictures/Sharpness.png</file>
+        <file>pictures/Scope.png</file>
+        <file>pictures/Converage.png</file>
     </qresource>
 </RCC>

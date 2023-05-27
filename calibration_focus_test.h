@@ -27,11 +27,16 @@ public:
     void setTestFocusVector(std::vector<uint8_t>);
 
     void setUpTest();
+
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
+
 signals:
 
 private:
     int index_ = 0;
     bool firstScreenSizeEnter;
+    bool firstCalibrationTest;
     DrawType draw_state;
     QPushButton *backButton;
     QScreen *screen;
@@ -47,6 +52,7 @@ private:
     void showCalibrationTest();
     void screenTest();
     void drawCoordinateSystem(int screenWidth, int screenHeight);
+    void setUpTest(uint8_t);
 };
 
 #endif // CALIBRATION_FOCUS_TEST_H

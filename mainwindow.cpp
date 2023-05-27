@@ -408,7 +408,7 @@ void MainWindow::addCalibrationTests()
         testCodeVector.push_back(1);
     }
     if(ui->Scope->isChecked()){
-        testFocusVector.push_back(0);
+        testFocusVector.push_back(11);
         testCodeVector.push_back(1);
     }
     if(ui->Gamma->isChecked()){
@@ -416,7 +416,7 @@ void MainWindow::addCalibrationTests()
         testCodeVector.push_back(1);
     }
     if(ui->Convergence->isChecked()){
-        testFocusVector.push_back(0);
+        testFocusVector.push_back(12);
         testCodeVector.push_back(1);
     }
     if(ui->ScreenSize->isChecked()){
