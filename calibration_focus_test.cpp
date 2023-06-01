@@ -32,6 +32,7 @@ std::unordered_map<uint8_t, const char *> calib_focus_test_map
 
 CalibrationFocusTest::CalibrationFocusTest(QWidget *parent)
     : QWidget{parent}
+//, painter{this}
 {
     label = nullptr;
     backButton = new QPushButton("X", this);
@@ -74,38 +75,14 @@ void CalibrationFocusTest::paintEvent(QPaintEvent *event)
         firstCalibrationTest = false;
         QPainter painter(this);
         switch (draw_state) {
-        case DrawType::kDots:
-            for (int y = 0; y < screen->geometry().height(); y += kDelta) {
-                for (int x = 0; x < screen->geometry().width(); x += kDelta) {
-                    painter.fillRect(x, y, kPixelsSize, kPixelsSize, Qt::black);
-                    painter.fillRect(x + kPixelsSize,
-                                     y + kPixelsSize,
-                                     kPixelsSize,
-                                     kPixelsSize,
-                                     Qt::black);
-                }
-            }
+        case DrawType::kNone:
             break;
-        case DrawType::kGorizontal: {
-            painter.setPen(Qt::black);
-            int y = 0;
-            int spacing = kDelta;
-
-            while (y < screen->geometry().height()) {
-                painter.drawLine(0, y, screen->geometry().width(), y);
-                y += spacing;
-            }
-        } break;
-        case DrawType::kVertical: {
-            painter.setPen(Qt::black);
-            int x = 0;
-            int spacing = kDelta;
-
-            while (x < screen->geometry().width()) {
-                painter.drawLine(x, 0, x, screen->geometry().height());
-                x += spacing;
-            }
-        } break;
+        case DrawType::kHorizontal:
+        case DrawType::kVertical:
+        case DrawType::kDots:
+            saveDrawedPicture(draw_state);
+            showPictureToTheScreen();
+            break;
         case DrawType::kPicture:
             showCalibrationTest();
             break;
@@ -159,7 +136,7 @@ void CalibrationFocusTest::setUpTest()
             draw_state = DrawType::kVertical;
             break;
         case 3:
-            draw_state = DrawType::kGorizontal;
+            draw_state = DrawType::kHorizontal;
             break;
         case 10:
             draw_state = DrawType::kScreenSize;
@@ -264,6 +241,7 @@ void CalibrationFocusTest::drawCoordinateSystem(int screenWidth, int screenHeigh
 
 void CalibrationFocusTest::setUpTest(uint8_t code)
 {
+    firstCalibrationTest = true;
     switch (code) {
     case 1:
         draw_state = DrawType::kDots;
@@ -272,7 +250,7 @@ void CalibrationFocusTest::setUpTest(uint8_t code)
         draw_state = DrawType::kVertical;
         break;
     case 3:
-        draw_state = DrawType::kGorizontal;
+        draw_state = DrawType::kHorizontal;
         break;
     case 10:
         firstScreenSizeEnter = true;
@@ -347,16 +325,72 @@ void CalibrationFocusTest::keyPressEvent(QKeyEvent *event)
     case Qt::Key_Left:
         index_ = (index_ - 1 + testFocusVector.size()) % testFocusVector.size();
         setUpTest(testFocusVector[index_]);
-        firstCalibrationTest = true;
         break;
     case Qt::Key_Right:
         index_ = (index_ + 1) % testFocusVector.size();
         setUpTest(testFocusVector[index_]);
-        firstCalibrationTest = true;
         break;
     default:
         QWidget::keyPressEvent(event);
-        firstCalibrationTest = true;
         break;
     }
+}
+
+bool CalibrationFocusTest::saveDrawedPicture(DrawType type)
+{
+    // Create a QPixmap object with the size of the widget
+    QPixmap pixmap(screen->geometry().size());
+    pixmap.fill(Qt::white); // Optional: Set the background to transparent
+
+    QPainter painter(&pixmap); // Set the pixmap as the painter's device
+
+    switch (type) {
+    case DrawType::kDots:
+        for (int y = 0; y < screen->geometry().height(); y += kDelta) {
+            for (int x = 0; x < screen->geometry().width(); x += kDelta) {
+                painter.fillRect(x, y, kPixelsSize, kPixelsSize, Qt::black);
+                painter.fillRect(x + kPixelsSize,
+                                 y + kPixelsSize,
+                                 kPixelsSize,
+                                 kPixelsSize,
+                                 Qt::black);
+            }
+        }
+        break;
+    case DrawType::kVertical: {
+        painter.setPen(QPen(Qt::black, kLineWidth));
+        int x = 0;
+        int spacing = kLineDelta;
+
+        while (x < screen->geometry().width()) {
+            painter.drawLine(x, 0, x, screen->geometry().height());
+            x += spacing;
+        }
+    } break;
+    case DrawType::kHorizontal: {
+        painter.setPen(QPen(Qt::black, kLineWidth));
+        int y = 0;
+        int spacing = kLineDelta;
+
+        while (y < screen->geometry().height()) {
+            painter.drawLine(0, y, screen->geometry().width(), y);
+            y += spacing;
+        }
+    } break;
+    }
+    painter.end(); // Release the painter
+
+    pixmap.save("PictureOutput.png"); // Save the pixmap as an image file
+}
+
+void CalibrationFocusTest::showPictureToTheScreen()
+{
+    label = new QLabel(this);
+    QRect screenGeometry = QGuiApplication::primaryScreen()->geometry();
+    QSize screenSize = screenGeometry.size();
+    QPixmap pixmap("PictureOutput.png");
+    label->setPixmap(pixmap.scaled(screenSize));
+    label->setGeometry(QRect(QPoint(0, 0), screenSize));
+    label->showFullScreen();
+    backButton->raise();
 }

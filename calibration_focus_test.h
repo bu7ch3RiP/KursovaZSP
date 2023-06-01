@@ -3,15 +3,18 @@
 
 #include <QGraphicsScene>
 #include <QLabel>
+#include <QPainter>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QWidget>
 #include <unordered_map>
 
 constexpr int kDelta{3};
+constexpr int kLineDelta{4};
+constexpr int kLineWidth{3};
 constexpr int kPixelsSize{2};
 
-enum class DrawType { kDots, kVertical, kGorizontal, kPicture, kScreenSize, kNone };
+enum class DrawType { kDots, kVertical, kHorizontal, kPicture, kScreenSize, kNone };
 
 class CalibrationFocusTest : public QWidget
 {
@@ -41,6 +44,7 @@ private:
     QPushButton *backButton;
     QScreen *screen;
     QLabel *label;
+    //QPainter painter;
     QGraphicsScene *scene;
     QGraphicsView *view;
     QVBoxLayout *layout;
@@ -49,6 +53,8 @@ private:
     std::vector<uint8_t> testFocusVector{};
 
 private:
+    bool saveDrawedPicture(DrawType type);
+    void showPictureToTheScreen();
     void showCalibrationTest();
     void screenTest();
     void drawCoordinateSystem(int screenWidth, int screenHeight);

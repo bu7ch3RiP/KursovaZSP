@@ -11,10 +11,10 @@ Read Test - 8
 Calibration tests
 LCDCalibration - 4
 Brightness - 5
-Scope
+Scope - 11
 Gamma - 6
-Convergence 
-ScreenSize
+Convergence - 12
+ScreenSize - 10
 
 FOCUS TESTS
 WhitePattern - 7

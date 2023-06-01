@@ -369,6 +369,36 @@ void MainWindow::addReadTests()
 void MainWindow::addCalibrationTests()
 {
     clearAllVectors();
+
+    //Calibration test
+    if (ui->LCDCalibration->isChecked()) {
+        testFocusVector.push_back(4);
+        testCodeVector.push_back(1);
+    }
+
+    if (ui->Brightness->isChecked()) {
+        testFocusVector.push_back(5);
+        testCodeVector.push_back(1);
+    }
+
+    if (ui->Scope->isChecked()) {
+        testFocusVector.push_back(11);
+        testCodeVector.push_back(1);
+    }
+
+    if (ui->Gamma->isChecked()) {
+        testFocusVector.push_back(6);
+        testCodeVector.push_back(1);
+    }
+    if (ui->Convergence->isChecked()) {
+        testFocusVector.push_back(12);
+        testCodeVector.push_back(1);
+    }
+    if (ui->ScreenSize->isChecked()) {
+        testFocusVector.push_back(10);
+        testCodeVector.push_back(1);
+    }
+
     //Focus test
     if(ui->WhitePattern->isChecked()){
         testFocusVector.push_back(7);
@@ -395,32 +425,6 @@ void MainWindow::addCalibrationTests()
     if(ui->HorisontalLines->isChecked()){
         // Horisontal lines
         testFocusVector.push_back(3);
-        testCodeVector.push_back(1);
-    }
-
-    //Calibration test
-    if(ui->LCDCalibration->isChecked()){
-        testFocusVector.push_back(4);
-        testCodeVector.push_back(1);
-    }
-    if(ui->Brightness->isChecked()){
-        testFocusVector.push_back(5);
-        testCodeVector.push_back(1);
-    }
-    if(ui->Scope->isChecked()){
-        testFocusVector.push_back(11);
-        testCodeVector.push_back(1);
-    }
-    if(ui->Gamma->isChecked()){
-        testFocusVector.push_back(6);
-        testCodeVector.push_back(1);
-    }
-    if(ui->Convergence->isChecked()){
-        testFocusVector.push_back(12);
-        testCodeVector.push_back(1);
-    }
-    if(ui->ScreenSize->isChecked()){
-        testFocusVector.push_back(10);
         testCodeVector.push_back(1);
     }
 }
