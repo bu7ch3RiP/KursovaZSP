@@ -30,7 +30,6 @@ public:
     std::vector<uint8_t> getFocusVector();
 
 protected:
-
 private slots:
     void on_CalibrationTests_clicked();
     void on_GridTests_clicked();
@@ -40,6 +39,12 @@ private slots:
     void on_actionSelect_all_triggered();
     void on_actionClear_All_triggered();
     void on_RunTests_clicked();
+
+    void on_actionTests_for_LCD_monitors_triggered();
+
+    void on_actionPreferences_triggered();
+
+    void on_actionExit_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -60,7 +65,7 @@ private:
     void addCalibrationTests();
     uint8_t getFirstCodeElement();
     QColor getFirstColorElement();
-
+    void clearAllCheckBoxes();
     void clearAllVectors();
 };
 

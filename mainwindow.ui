@@ -936,6 +936,8 @@
      <string>File</string>
     </property>
     <addaction name="actionExit"/>
+    <addaction name="separator"/>
+    <addaction name="actionPreferences"/>
    </widget>
    <widget class="QMenu" name="menuSelection">
     <property name="title">
@@ -974,6 +976,11 @@
   <action name="actionTests_for_LCD_monitors">
    <property name="text">
     <string>Tests for LCD monitors</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>Preferences</string>
    </property>
   </action>
  </widget>

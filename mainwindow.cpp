@@ -2,14 +2,14 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-#include <QList>
-#include <QCheckBox>
 #include <QAction>
-#include <QWidget>
-#include <QScreen>
+#include <QCheckBox>
+#include <QCoreApplication>
 #include <QKeyEvent>
-
-
+#include <QList>
+#include <QMessageBox>
+#include <QScreen>
+#include <QWidget>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -135,17 +135,19 @@ void MainWindow::on_actionSelect_all_triggered()
     }
 }
 
-
-void MainWindow::on_actionClear_All_triggered()
+void MainWindow::clearAllCheckBoxes()
 {
-    for (int i = 0; i < ui->stackedWidget->count(); i++)
-    {
-        QList<QCheckBox*> checkBoxes = ui->stackedWidget->widget(i)->findChildren<QCheckBox*>();
-        for (int j = 0; j < checkBoxes.count(); j++)
-        {
+    for (int i = 0; i < ui->stackedWidget->count(); i++) {
+        QList<QCheckBox *> checkBoxes = ui->stackedWidget->widget(i)->findChildren<QCheckBox *>();
+        for (int j = 0; j < checkBoxes.count(); j++) {
             checkBoxes.at(j)->setChecked(false);
         }
     }
+}
+
+void MainWindow::on_actionClear_All_triggered()
+{
+    clearAllCheckBoxes();
 }
 
 
@@ -449,4 +451,47 @@ void MainWindow::clearAllVectors()
         testColorVector.clear();
     if (!testFocusVector.empty())
         testFocusVector.clear();
+}
+
+void MainWindow::on_actionTests_for_LCD_monitors_triggered()
+{
+    clearAllCheckBoxes();
+    ui->LCDCalibration->setChecked(true);
+    ui->Brightness->setChecked(true);
+    ui->Scope->setChecked(true);
+    ui->Gamma->setChecked(true);
+    ui->ScreenSize->setChecked(true);
+    ui->Sharpness->setChecked(true);
+    ui->Dots->setChecked(true);
+    ui->MagentaGrid->setChecked(true);
+    ui->MagentaGridBlack->setChecked(true);
+    ui->YellowGridBlack->setChecked(true);
+    ui->YellowGrid->setChecked(true);
+    ui->Red->setChecked(true);
+    ui->Green->setChecked(true);
+    ui->Blue->setChecked(true);
+    ui->Orange->setChecked(true);
+    ui->White->setChecked(true);
+    ui->Black->setChecked(true);
+    ui->Gray50->setChecked(true);
+    ui->RedGradient->setChecked(true);
+    ui->GreenGradient->setChecked(true);
+    ui->BlueGradient->setChecked(true);
+    ui->OrangeGradient->setChecked(true);
+    ui->GrayGradient->setChecked(true);
+    ui->ColorPalette->setChecked(true);
+    ui->ColorPalette180->setChecked(true);
+    ui->WhiteText->setChecked(true);
+    ui->BlackText->setChecked(true);
+    ui->RedText->setChecked(true);
+    ui->BlueText->setChecked(true);
+    ui->MagentaText->setChecked(true);
+    ui->YellowText->setChecked(true);
+}
+
+void MainWindow::on_actionPreferences_triggered() {}
+
+void MainWindow::on_actionExit_triggered()
+{
+    this->close();
 }
