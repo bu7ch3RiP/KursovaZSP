@@ -10,12 +10,28 @@
 #include <QMessageBox>
 #include <QScreen>
 #include <QWidget>
+#include <unordered_map>
+
+std::unordered_map<int, double> window_height_size_{{1080, 1.6},
+                                                    {1050, 1.6},
+                                                    {1024, 1.4},
+                                                    {960, 1.3},
+                                                    {900, 1.4},
+                                                    {800, 1.2},
+                                                    {768, 1.3},
+                                                    {720, 1.15}};
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    int width_window_size_ = ui->line->width();
+    int height_ = QGuiApplication::primaryScreen()->geometry().height();
+    double delta_height_ = window_height_size_.find(height_) != window_height_size_.end()
+                               ? window_height_size_[height_]
+                               : 1;
+    this->setFixedSize(QSize(width_window_size_, height_ / delta_height_));
 }
 
 MainWindow::~MainWindow()
