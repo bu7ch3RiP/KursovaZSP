@@ -15,6 +15,7 @@ namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class Preference;
+class About;
 
 class MainWindow : public QMainWindow
 
@@ -45,6 +46,8 @@ private slots:
     void on_actionExit_triggered();
     void handlePreferenceClosed();
 
+    void on_actionAbout_triggered();
+
 private:
     Ui::MainWindow *ui;
     bool isOneTest{};
@@ -59,6 +62,7 @@ private:
     ReadTest *readTest = nullptr;
     CalibrationFocusTest *cf_test = nullptr;
     Preference *preference = nullptr;
+    About *about = nullptr;
 
 private:
     void addSelectedColorTests();

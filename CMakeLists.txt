@@ -23,6 +23,7 @@ set(PROJECT_SOURCES
         read_test.h
         grid_test.h
         preference.h
+        about.h
         color_test.h
         mainwindow.h
         mainwindow.ui

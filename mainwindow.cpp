@@ -1,6 +1,7 @@
 
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "about.h"
 #include "preference.h"
 
 #include <QAction>
@@ -534,7 +535,20 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::handlePreferenceClosed()
 {
-    qDebug() << "Close the window :)";
-    qDebug() << "Seconds: " << auto_test_timeout_;
-    qDebug() << "Save state: " << save_settings_;
+    //Here must be saving :)
+}
+
+void MainWindow::on_actionAbout_triggered()
+{
+    if (about == nullptr) {
+        about = new About();
+    }
+
+    about->show();
+    about->exec();
+
+    if (about != nullptr) {
+        delete about;
+        about = nullptr;
+    }
 }
