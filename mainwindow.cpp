@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "about.h"
+#include "language.h"
 #include "preference.h"
 
 #include <QAction>
@@ -29,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
     , auto_test_timeout_{4}
     , save_settings_{true}
     , isAutoTest{false}
+    , language_state_{LanguageMode::kEN}
 {
     ui->setupUi(this);
     setWindowTitle("Monitor testing");
@@ -43,6 +45,80 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::SetUALocalization()
+{
+    //bar menu
+    ui->menuFile->setTitle(menu_ua[0]);
+    ui->menuSelection->setTitle(menu_ua[1]);
+    ui->menuHelp->setTitle(menu_ua[2]);
+    ui->actionExit->setText(menu_ua[3]);
+    ui->actionPreferences->setText(menu_ua[4]);
+    ui->actionSelect_all->setText(menu_ua[5]);
+    ui->actionClear_All->setText(menu_ua[6]);
+    ui->actionTests_for_LCD_monitors->setText(menu_ua[7]);
+    ui->actionAbout->setText(menu_ua[8]);
+    ui->menuLanguage->setTitle(menu_ua[9]);
+    ui->actionUkranian->setText(menu_ua[10]);
+    ui->actionEnglish->setText(menu_ua[11]);
+
+    //buttons
+    ui->RunTests->setText(buttons_ua[0]);
+    ui->RunTests->setGeometry(QRect(535, 430, 240, 30));
+
+    ui->AutoRunTests->setText(buttons_ua[1]);
+    ui->AutoRunTests->setGeometry(QRect(250, 430, 280, 30));
+
+    ui->CalibrationTests->setText(buttons_ua[2]);
+    ui->CalibrationTests->setGeometry(QRect(21, 11, 185, 34));
+
+    ui->GridTests->setText(buttons_ua[3]);
+    ui->GridTests->setGeometry(QRect(212, 11, 120, 34));
+
+    ui->ColorTests->setText(buttons_ua[4]);
+    ui->ColorTests->setGeometry(QRect(338, 11, 160, 34));
+
+    ui->ReadingTests->setText(buttons_ua[5]);
+    ui->ReadingTests->setGeometry(QRect(504, 5, 200, 45));
+    ui->ReadingTests->setFont(QFont("Segoe UI", 12));
+}
+
+void MainWindow::SetENLocalization()
+{
+    //bar menu
+    ui->menuFile->setTitle(menu_en[0]);
+    ui->menuSelection->setTitle(menu_en[1]);
+    ui->menuHelp->setTitle(menu_en[2]);
+    ui->actionExit->setText(menu_en[3]);
+    ui->actionPreferences->setText(menu_en[4]);
+    ui->actionSelect_all->setText(menu_en[5]);
+    ui->actionClear_All->setText(menu_en[6]);
+    ui->actionTests_for_LCD_monitors->setText(menu_en[7]);
+    ui->actionAbout->setText(menu_en[8]);
+    ui->menuLanguage->setTitle(menu_en[9]);
+    ui->actionUkranian->setText(menu_en[10]);
+    ui->actionEnglish->setText(menu_en[11]);
+
+    //buttons
+    ui->RunTests->setText(buttons_en[0]);
+    ui->RunTests->setGeometry(QRect(600, 430, 165, 30));
+
+    ui->AutoRunTests->setText(buttons_en[1]);
+    ui->AutoRunTests->setGeometry(QRect(374, 430, 211, 30));
+
+    ui->CalibrationTests->setText(buttons_en[2]);
+    ui->CalibrationTests->setGeometry(QRect(21, 11, 144, 34));
+
+    ui->GridTests->setText(buttons_en[3]);
+    ui->GridTests->setGeometry(QRect(171, 11, 87, 34));
+
+    ui->ColorTests->setText(buttons_en[4]);
+    ui->ColorTests->setGeometry(QRect(264, 11, 97, 34));
+
+    ui->ReadingTests->setText(buttons_en[5]);
+    ui->ReadingTests->setGeometry(QRect(367, 11, 119, 34));
+    ui->ReadingTests->setFont(QFont("Segoe UI", 14));
 }
 
 void MainWindow::createTestWindow()
@@ -95,8 +171,10 @@ void MainWindow::createTestWindow()
     }
 }
 
-
-std::vector<uint8_t> MainWindow::getCodeVector(){return testCodeVector;}
+std::vector<uint8_t> MainWindow::getCodeVector()
+{
+    return testCodeVector;
+}
 std::vector<QColor> MainWindow::getColorVector(){return testColorVector;}
 
 std::vector<uint8_t> MainWindow::getFocusVector()
@@ -553,4 +631,20 @@ void MainWindow::on_actionAbout_triggered()
         delete about;
         about = nullptr;
     }
+}
+
+void MainWindow::on_actionUkranian_triggered()
+{
+    if (language_state_ == LanguageMode::kUA)
+        return;
+    SetUALocalization();
+    language_state_ = LanguageMode::kUA;
+}
+
+void MainWindow::on_actionEnglish_triggered()
+{
+    if (language_state_ == LanguageMode::kEN)
+        return;
+    SetENLocalization();
+    language_state_ = LanguageMode::kEN;
 }

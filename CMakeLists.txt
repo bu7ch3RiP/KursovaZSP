@@ -22,6 +22,7 @@ set(PROJECT_SOURCES
         calibration_focus_test.h
         read_test.h
         grid_test.h
+        language.h
         preference.h
         about.h
         color_test.h

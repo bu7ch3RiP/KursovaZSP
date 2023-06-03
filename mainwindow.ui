@@ -861,66 +861,6 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>467</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="CalibrationTests">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Calibration tests</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="GridTests">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Grid tests</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="ColorTests">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Color tests</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="ReadingTests">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Reading tests</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QPushButton" name="AutoRunTests">
     <property name="geometry">
      <rect>
@@ -937,6 +877,78 @@
     </property>
     <property name="text">
      <string>Auto Run Selected Tests</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="CalibrationTests">
+    <property name="geometry">
+     <rect>
+      <x>21</x>
+      <y>11</y>
+      <width>144</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Calibration tests</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ColorTests">
+    <property name="geometry">
+     <rect>
+      <x>264</x>
+      <y>11</y>
+      <width>97</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Color tests</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="GridTests">
+    <property name="geometry">
+     <rect>
+      <x>171</x>
+      <y>11</y>
+      <width>87</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Grid tests</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ReadingTests">
+    <property name="geometry">
+     <rect>
+      <x>367</x>
+      <y>11</y>
+      <width>119</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Reading tests</string>
     </property>
    </widget>
   </widget>
@@ -972,9 +984,17 @@
     </property>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuLanguage">
+    <property name="title">
+     <string>Language</string>
+    </property>
+    <addaction name="actionUkranian"/>
+    <addaction name="actionEnglish"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSelection"/>
    <addaction name="menuHelp"/>
+   <addaction name="menuLanguage"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionExit">
@@ -1005,6 +1025,16 @@
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionUkranian">
+   <property name="text">
+    <string>Ukranian</string>
+   </property>
+  </action>
+  <action name="actionEnglish">
+   <property name="text">
+    <string>English</string>
    </property>
   </action>
  </widget>

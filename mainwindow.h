@@ -16,8 +16,9 @@ QT_END_NAMESPACE
 class Preference;
 class About;
 
-class MainWindow : public QMainWindow
+enum class LanguageMode { kUA, kEN };
 
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -47,6 +48,10 @@ private slots:
     void on_actionAbout_triggered();
     void on_AutoRunTests_clicked();
 
+    void on_actionUkranian_triggered();
+
+    void on_actionEnglish_triggered();
+
 private:
     Ui::MainWindow *ui;
     bool isAutoTest{};
@@ -62,6 +67,7 @@ private:
     CalibrationFocusTest *cf_test = nullptr;
     Preference *preference = nullptr;
     About *about = nullptr;
+    LanguageMode language_state_;
 
 private:
     void addSelectedColorTests();
@@ -73,6 +79,8 @@ private:
     void clearAllCheckBoxes();
     void clearAllVectors();
     void checkSelectedTests();
+    void SetUALocalization();
+    void SetENLocalization();
 };
 
 #endif // MAINWINDOW_H
