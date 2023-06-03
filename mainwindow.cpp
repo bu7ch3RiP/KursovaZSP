@@ -1,6 +1,7 @@
 
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "preference.h"
 
 #include <QAction>
 #include <QCheckBox>
@@ -24,9 +25,11 @@ std::unordered_map<int, double> window_height_size_{{1080, 1.6},
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , auto_test_timeout_{4}
+    , save_settings_{true}
 {
     ui->setupUi(this);
-    int width_window_size_ = ui->line->width();
+    int width_window_size_ = ui->line->width() + 20;
     int height_ = QGuiApplication::primaryScreen()->geometry().height();
     double delta_height_ = window_height_size_.find(height_) != window_height_size_.end()
                                ? window_height_size_[height_]
@@ -505,9 +508,33 @@ void MainWindow::on_actionTests_for_LCD_monitors_triggered()
     ui->YellowText->setChecked(true);
 }
 
-void MainWindow::on_actionPreferences_triggered() {}
+void MainWindow::on_actionPreferences_triggered()
+{
+    if (preference == nullptr) {
+        preference = new Preference(auto_test_timeout_, save_settings_);
+        connect(preference,
+                &Preference::preferenceClosed,
+                this,
+                &MainWindow::handlePreferenceClosed);
+    }
+
+    preference->show();
+    preference->exec();
+
+    if (preference != nullptr) {
+        delete preference;
+        preference = nullptr;
+    }
+}
 
 void MainWindow::on_actionExit_triggered()
 {
     this->close();
+}
+
+void MainWindow::handlePreferenceClosed()
+{
+    qDebug() << "Close the window :)";
+    qDebug() << "Seconds: " << auto_test_timeout_;
+    qDebug() << "Save state: " << save_settings_;
 }

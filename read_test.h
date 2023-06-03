@@ -11,7 +11,8 @@ struct qColorMap {
     std::vector<QColor> key_;
     std::vector<QColor> value_;
 
-    bool insert(QColor keyColor, QColor valueColor){
+    void insert(QColor keyColor, QColor valueColor)
+    {
         key_.push_back(keyColor);
         value_.push_back(valueColor);
     }

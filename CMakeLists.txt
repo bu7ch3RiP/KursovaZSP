@@ -22,6 +22,7 @@ set(PROJECT_SOURCES
         calibration_focus_test.h
         read_test.h
         grid_test.h
+        preference.h
         color_test.h
         mainwindow.h
         mainwindow.ui
