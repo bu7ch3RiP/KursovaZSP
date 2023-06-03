@@ -28,10 +28,9 @@ ColorTest::ColorTest(const bool &auto_test, const size_t &timeout, QWidget *pare
     setFocusPolicy(Qt::StrongFocus);
 
     if (auto_test) {
-        // Set up the QTimer to update the image every 4 seconds
         QTimer *timer = new QTimer(this);
         connect(timer, &QTimer::timeout, this, &ColorTest::updateImage);
-        timer->start(timeout * 1000); // Change the image every 4 seconds
+        timer->start(timeout * 1000);
     }
 }
 

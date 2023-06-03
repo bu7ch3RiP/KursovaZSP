@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     , isAutoTest{false}
 {
     ui->setupUi(this);
+    setWindowTitle("Monitor testing");
     int width_window_size_ = ui->line->width() + 20;
     int height_ = QGuiApplication::primaryScreen()->geometry().height();
     double delta_height_ = window_height_size_.find(height_) != window_height_size_.end()

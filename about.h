@@ -21,32 +21,24 @@ public:
         QFont titleFont("Arial", 16, QFont::Bold);
         QFont productFont("Arial", 14, QFont::Bold);
         QFont infoFont("Arial", 14);
-        // Window title and text
         setWindowTitle("About");
         QLabel *titleLabel = new QLabel("Monitor Testing");
         titleLabel->setAlignment(Qt::AlignCenter);
         titleLabel->setFont(titleFont);
-
-        // Product information
         QLabel *productLabel = new QLabel(" Product information:");
         productLabel->setFont(productFont);
-
-        // Course project information
         QLabel *projectLabel = new QLabel("    This work was performed within the scope of the "
                                           "course\nproject in the discipline: \"System Software\"");
         projectLabel->setFont(infoFont);
-        // Author information
         QLabel *authorLabel = new QLabel(" Author of the work:");
         authorLabel->setFont(productFont);
         QLabel *nameLabel = new QLabel(
             "    Name, student of group KI-3 of the National University\n"
             "\"Lviv Polytechnic\" majoring in Computer Engineering");
         nameLabel->setFont(infoFont);
-        // Version information
         QLabel *versionLabel = new QLabel("Version: 1.0 beta");
         versionLabel->setAlignment(Qt::AlignCenter);
         versionLabel->setFont(productFont);
-        // Add all the labels to the layout
         layout->addWidget(titleLabel);
         layout->addSpacing(10);
         layout->addWidget(productLabel);
@@ -54,9 +46,8 @@ public:
         layout->addSpacing(20);
         layout->addWidget(authorLabel);
         layout->addWidget(nameLabel);
-        layout->addWidget(new QLabel("")); // Empty line
+        layout->addWidget(new QLabel(""));
         layout->addWidget(versionLabel);
-
         setLayout(layout);
         setFixedSize(520, 300);
     }

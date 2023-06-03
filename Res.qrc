@@ -10,5 +10,6 @@
         <file>pictures/Sharpness.png</file>
         <file>pictures/Scope.png</file>
         <file>pictures/Converage.png</file>
+        <file>pictures/MonitorTesting.ico</file>
     </qresource>
 </RCC>

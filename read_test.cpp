@@ -38,10 +38,9 @@ ReadTest::ReadTest(const bool &auto_test, const size_t &timeout, QWidget *parent
     setFocusPolicy(Qt::StrongFocus);
 
     if (auto_test) {
-        // Set up the QTimer to update the image every 4 seconds
         QTimer *timer = new QTimer(this);
         connect(timer, &QTimer::timeout, this, &ReadTest::updateImage);
-        timer->start(timeout * 1000); // Change the image every 4 seconds
+        timer->start(timeout * 1000);
     }
 }
 

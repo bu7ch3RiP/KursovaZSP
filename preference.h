@@ -21,7 +21,6 @@ public:
     {
         QVBoxLayout *layout = new QVBoxLayout(this);
 
-        // Automatic mode group box
         QGroupBox *automaticGroupBox = new QGroupBox("Automatic mode");
         spinBox = new QSpinBox;
         spinBox->setRange(4, 20);
@@ -32,7 +31,6 @@ public:
         automaticGroupBox->setLayout(automaticLayout);
         spinBox->setValue(auto_timeout);
 
-        // General settings group box
         QGroupBox *generalGroupBox = new QGroupBox("General settings");
         checkBox = new QCheckBox("Save test selection state on exit");
         QVBoxLayout *generalLayout = new QVBoxLayout;
@@ -40,7 +38,6 @@ public:
         generalLayout->addWidget(checkBox);
         generalGroupBox->setLayout(generalLayout);
 
-        // Save button
         QPushButton *saveButton = new QPushButton("Save");
         connect(saveButton, &QPushButton::clicked, this, &Preference::saveButtonClicked);
 
@@ -60,7 +57,6 @@ signals:
 private slots:
     void saveButtonClicked()
     {
-        // Save values from the spin box and check box
         *p_auto_test_ = static_cast<size_t>(spinBox->value());
         *p_save_ = checkBox->isChecked();
         QMessageBox::information(this, "Settings Saved", "The settings have been saved.");

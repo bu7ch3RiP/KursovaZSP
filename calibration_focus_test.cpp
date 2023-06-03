@@ -16,8 +16,8 @@
 #include <QVBoxLayout>
 #include <QtWidgets>
 
-const QColor AxisColor = Qt::white; // Change coordinate system color to white
-const QColor GridColor = Qt::white; // Set grid color to black
+const QColor AxisColor = Qt::white;
+const QColor GridColor = Qt::white;
 const QFont TextFont("Arial", 8, QFont::Bold);
 
 std::unordered_map<uint8_t, const char *> calib_focus_test_map
@@ -55,10 +55,9 @@ CalibrationFocusTest::CalibrationFocusTest(const bool &auto_test,
     setFocusPolicy(Qt::StrongFocus);
 
     if (auto_test) {
-        // Set up the QTimer to update the image every 4 seconds
         QTimer *timer = new QTimer(this);
         connect(timer, &QTimer::timeout, this, &CalibrationFocusTest::updateImage);
-        timer->start(timeout * 1000); // Change the image every 4 seconds
+        timer->start(timeout * 1000);
     }
 }
 
@@ -402,6 +401,7 @@ bool CalibrationFocusTest::saveDrawedPicture(DrawType type)
     painter.end(); // Release the painter
 
     pixmap.save("PictureOutput.png"); // Save the pixmap as an image file
+    return true;
 }
 
 void CalibrationFocusTest::showPictureToTheScreen()
