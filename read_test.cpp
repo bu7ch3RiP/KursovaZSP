@@ -2,19 +2,20 @@
 #include "read_test.h"
 #include <QWidget>
 
-#include <QtWidgets>
-#include <QPushButton>
 #include <QGuiApplication>
-#include <QPainter>
-#include <QRect>
-#include <QPixmap>
-#include <QScreen>
-#include <QPaintEvent>
-#include <QVBoxLayout>
 #include <QKeyEvent>
 #include <QLinearGradient>
+#include <QPaintEvent>
+#include <QPainter>
+#include <QPixmap>
+#include <QPushButton>
+#include <QRect>
+#include <QScreen>
+#include <QTimer>
+#include <QVBoxLayout>
+#include <QtWidgets>
 
-ReadTest::ReadTest(QWidget *parent)
+ReadTest::ReadTest(const bool &auto_test, const size_t &timeout, QWidget *parent)
     : QWidget{parent}
 {
     qCMap.insert(Qt::white, Qt::black);
@@ -34,9 +35,26 @@ ReadTest::ReadTest(QWidget *parent)
     backButton->setGeometry(QRect(QPoint(screen->geometry().width()-35, 5), QSize(30, 30)));
 
     index_ = 0;
-    setFocusPolicy( Qt::StrongFocus );
+    setFocusPolicy(Qt::StrongFocus);
 
+    if (auto_test) {
+        // Set up the QTimer to update the image every 4 seconds
+        QTimer *timer = new QTimer(this);
+        connect(timer, &QTimer::timeout, this, &ReadTest::updateImage);
+        timer->start(timeout * 1000); // Change the image every 4 seconds
+    }
+}
 
+void ReadTest::updateImage()
+{
+    // Create a QKeyEvent object for the right key press event
+    QKeyEvent *event = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
+
+    // Call the keyPressEvent function with the simulated event
+    keyPressEvent(event);
+
+    // Clean up the allocated event object
+    delete event;
 }
 
 QColor ReadTest::getFirstColor()

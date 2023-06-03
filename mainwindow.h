@@ -45,12 +45,12 @@ private slots:
     void on_actionPreferences_triggered();
     void on_actionExit_triggered();
     void handlePreferenceClosed();
-
     void on_actionAbout_triggered();
+    void on_AutoRunTests_clicked();
 
 private:
     Ui::MainWindow *ui;
-    bool isOneTest{};
+    bool isAutoTest{};
     size_t auto_test_timeout_{};
     bool save_settings_{};
     std::vector<const char*> testsVector{};
@@ -73,6 +73,7 @@ private:
     QColor getFirstColorElement();
     void clearAllCheckBoxes();
     void clearAllVectors();
+    void checkSelectedTests();
 };
 
 #endif // MAINWINDOW_H

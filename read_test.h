@@ -35,7 +35,7 @@ class ReadTest : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ReadTest(QWidget *parent = nullptr);
+    explicit ReadTest(const bool &auto_test, const size_t &timeout, QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event) override;
 
     void setTestColorVector( std::vector<QColor> );
@@ -60,6 +60,9 @@ private:
     std::vector<uint8_t> testCodeVector{};
     std::vector<QColor> testColorVector{};
     int index_{};
+
+private:
+    void updateImage();
 };
 
 #endif // READTEST_H

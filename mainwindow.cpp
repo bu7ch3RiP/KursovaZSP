@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     , auto_test_timeout_{4}
     , save_settings_{true}
+    , isAutoTest{false}
 {
     ui->setupUi(this);
     int width_window_size_ = ui->line->width() + 20;
@@ -45,38 +46,33 @@ MainWindow::~MainWindow()
 
 void MainWindow::createTestWindow()
 {
-    // Створення нового вікна
-    //TestWindow *newWindow = new TestWindow();
-    if(isOneTest){
-        if (ui->stackedWidget->currentIndex() == 0) {
-            cf_test = new CalibrationFocusTest();
-            cf_test->setTestCodeVector(getCodeVector());
-            cf_test->setTestFocusVector(getFocusVector());
-            cf_test->setUpTest();
-            cf_test->showFullScreen();
-        } else if (ui->stackedWidget->currentIndex() == 1) {
-            gridTest = new GridTest();
-            gridTest->setTestCodeVector(getCodeVector());
-            gridTest->setTestColorVector(getColorVector());
-            gridTest->setFirstGrid(gridTest->getFirstColor());
-            gridTest->showFullScreen();
-        } else if (ui->stackedWidget->currentIndex() == 2) {
-            colorTest = new ColorTest();
-            colorTest->setVectorValues(getVector());
-            colorTest->setCodeVector(getCodeVector());
-            colorTest->setColorVector(getColorVector());
-            colorTest->showFullScreen();
-        } else if (ui->stackedWidget->currentIndex() == 3) {
-            readTest = new ReadTest();
-            readTest->setTestCodeVector(getCodeVector());
-            readTest->setTestColorVector(getColorVector());
-            readTest->setColor(readTest->getFirstColor());
-            readTest->showFullScreen();
-        }
+    if (ui->stackedWidget->currentIndex() == 0) {
+        cf_test = new CalibrationFocusTest(isAutoTest, auto_test_timeout_);
+        cf_test->setTestCodeVector(getCodeVector());
+        cf_test->setTestFocusVector(getFocusVector());
+        cf_test->setUpTest();
+        cf_test->showFullScreen();
+    } else if (ui->stackedWidget->currentIndex() == 1) {
+        gridTest = new GridTest(isAutoTest, auto_test_timeout_);
+        gridTest->setTestCodeVector(getCodeVector());
+        gridTest->setTestColorVector(getColorVector());
+        gridTest->setFirstGrid(gridTest->getFirstColor());
+        gridTest->showFullScreen();
+    } else if (ui->stackedWidget->currentIndex() == 2) {
+        colorTest = new ColorTest(isAutoTest, auto_test_timeout_);
+        colorTest->setVectorValues(getVector());
+        colorTest->setCodeVector(getCodeVector());
+        colorTest->setColorVector(getColorVector());
+        colorTest->showFullScreen();
+    } else if (ui->stackedWidget->currentIndex() == 3) {
+        readTest = new ReadTest(isAutoTest, auto_test_timeout_);
+        readTest->setTestCodeVector(getCodeVector());
+        readTest->setTestColorVector(getColorVector());
+        readTest->setColor(readTest->getFirstColor());
+        readTest->showFullScreen();
     }
 
-    switch(getFirstCodeElement()){
-
+    switch (getFirstCodeElement()) {
     case 2:
         break;
     case 3:
@@ -96,11 +92,6 @@ void MainWindow::createTestWindow()
     case 8:
         break;
     }
-    // Показ вікна на повний екран
-    //newWindow->showFullScreen();
-
-    //newWindow->resize(400, 400);
-    //newWindow->show();
 }
 
 
@@ -173,22 +164,14 @@ void MainWindow::on_actionClear_All_triggered()
 
 void MainWindow::on_RunTests_clicked()
 {
-    isOneTest = true;
+    isAutoTest = false;
+    checkSelectedTests();
+}
 
-    if (ui->stackedWidget->currentIndex() == 0)
-        addCalibrationTests();
-
-    if (ui->stackedWidget->currentIndex() == 1)
-        addSelectedGridTests();
-
-    if(ui->stackedWidget->currentIndex() == 2)
-        addSelectedColorTests();
-
-    if(ui->stackedWidget->currentIndex() == 3)
-        addReadTests();
-
-    if (!testCodeVector.empty())
-        createTestWindow();
+void MainWindow::on_AutoRunTests_clicked()
+{
+    isAutoTest = true;
+    checkSelectedTests();
 }
 
 void MainWindow::addSelectedColorTests()
@@ -471,6 +454,24 @@ void MainWindow::clearAllVectors()
         testColorVector.clear();
     if (!testFocusVector.empty())
         testFocusVector.clear();
+}
+
+void MainWindow::checkSelectedTests()
+{
+    if (ui->stackedWidget->currentIndex() == 0)
+        addCalibrationTests();
+
+    if (ui->stackedWidget->currentIndex() == 1)
+        addSelectedGridTests();
+
+    if (ui->stackedWidget->currentIndex() == 2)
+        addSelectedColorTests();
+
+    if (ui->stackedWidget->currentIndex() == 3)
+        addReadTests();
+
+    if (!testCodeVector.empty())
+        createTestWindow();
 }
 
 void MainWindow::on_actionTests_for_LCD_monitors_triggered()

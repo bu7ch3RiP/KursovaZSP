@@ -15,7 +15,7 @@ class ColorTest : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ColorTest(QWidget *parent = nullptr);
+    explicit ColorTest(const bool &auto_test, const size_t &timeout, QWidget *parent = nullptr);
 
     void setVectorValues(std::vector<const char*>);
     void setCodeVector(std::vector<uint8_t>);
@@ -38,6 +38,9 @@ private:
     QPushButton *backButton;
     QScreen *screen;
     QLabel *label;
+
+private:
+    void updateImage();
 };
 
 #endif // TESTWINDOW_H

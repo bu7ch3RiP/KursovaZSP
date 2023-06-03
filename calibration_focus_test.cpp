@@ -30,7 +30,9 @@ std::unordered_map<uint8_t, const char *> calib_focus_test_map
        {11, ":/color/palette/pictures/Scope.png"},
        {12, ":/color/palette/pictures/Converage.png"}};
 
-CalibrationFocusTest::CalibrationFocusTest(QWidget *parent)
+CalibrationFocusTest::CalibrationFocusTest(const bool &auto_test,
+                                           const size_t &timeout,
+                                           QWidget *parent)
     : QWidget{parent}
 //, painter{this}
 {
@@ -51,6 +53,13 @@ CalibrationFocusTest::CalibrationFocusTest(QWidget *parent)
     firstScreenSizeEnter = true;
     firstCalibrationTest = true;
     setFocusPolicy(Qt::StrongFocus);
+
+    if (auto_test) {
+        // Set up the QTimer to update the image every 4 seconds
+        QTimer *timer = new QTimer(this);
+        connect(timer, &QTimer::timeout, this, &CalibrationFocusTest::updateImage);
+        timer->start(timeout * 1000); // Change the image every 4 seconds
+    }
 }
 
 CalibrationFocusTest::~CalibrationFocusTest()
@@ -267,6 +276,18 @@ void CalibrationFocusTest::setUpTest(uint8_t code)
         draw_state = DrawType::kPicture;
         break;
     }
+}
+
+void CalibrationFocusTest::updateImage()
+{
+    // Create a QKeyEvent object for the right key press event
+    QKeyEvent *event = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
+
+    // Call the keyPressEvent function with the simulated event
+    keyPressEvent(event);
+
+    // Clean up the allocated event object
+    delete event;
 }
 
 void CalibrationFocusTest::screenTest()

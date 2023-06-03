@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QPainter>
 #include <QPushButton>
+#include <QTimer>
 #include <QVBoxLayout>
 #include <QWidget>
 #include <unordered_map>
@@ -20,7 +21,9 @@ class CalibrationFocusTest : public QWidget
 {
     Q_OBJECT
 public:
-    explicit CalibrationFocusTest(QWidget *parent = nullptr);
+    explicit CalibrationFocusTest(const bool &auto_test,
+                                  const size_t &timeout,
+                                  QWidget *parent = nullptr);
     ~CalibrationFocusTest();
     void paintEvent(QPaintEvent *event);
     void setDrawState(DrawType);
@@ -59,6 +62,7 @@ private:
     void screenTest();
     void drawCoordinateSystem(int screenWidth, int screenHeight);
     void setUpTest(uint8_t);
+    void updateImage();
 };
 
 #endif // CALIBRATION_FOCUS_TEST_H

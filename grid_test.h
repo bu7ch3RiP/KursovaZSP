@@ -10,7 +10,7 @@ class GridTest : public QWidget
 {
     Q_OBJECT
 public:
-    explicit GridTest(QWidget *parent = nullptr);
+    explicit GridTest(const bool &auto_test, const size_t &timeout, QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event) override;
 
     void setTestColorVector( std::vector<QColor> );
@@ -32,6 +32,9 @@ private:
     std::vector<QColor> testColorVector{};
     QColor m_color = Qt::black;
     QColor m_backGround = Qt::white;
+
+private:
+    void updateImage();
 };
 
 #endif // GRIDWIDGET_H

@@ -921,6 +921,24 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="AutoRunTests">
+    <property name="geometry">
+     <rect>
+      <x>374</x>
+      <y>430</y>
+      <width>211</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Auto Run Selected Tests</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
