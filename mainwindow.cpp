@@ -49,6 +49,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::SetUALocalization()
 {
+    setWindowTitle(title_ua[0]);
+
     //bar menu
     ui->menuFile->setTitle(menu_ua[0]);
     ui->menuSelection->setTitle(menu_ua[1]);
@@ -82,10 +84,115 @@ void MainWindow::SetUALocalization()
     ui->ReadingTests->setText(buttons_ua[5]);
     ui->ReadingTests->setGeometry(QRect(504, 5, 200, 45));
     ui->ReadingTests->setFont(QFont("Segoe UI", 12));
+
+    //group boxes
+    ui->groupBox->setTitle(group_box_ua[0]);
+    ui->groupBox_2->setTitle(group_box_ua[1]);
+    ui->groupBox_3->setTitle(group_box_ua[2]);
+    ui->groupBox_4->setTitle(group_box_ua[3]);
+    ui->groupBox_5->setTitle(group_box_ua[4]);
+    ui->groupBox_6->setTitle(group_box_ua[5]);
+    ui->groupBox_7->setTitle(group_box_ua[6]);
+    ui->groupBox_8->setTitle(group_box_ua[7]);
+
+    //lables
+    ui->LCDCalibration->setText(lables_ua[0]);
+    ui->Brightness->setText(lables_ua[1]);
+    ui->Scope->setText(lables_ua[2]);
+    ui->Gamma->setText(lables_ua[3]);
+    ui->Convergence->setText(lables_ua[4]);
+    ui->ScreenSize->setText(lables_ua[5]);
+    ui->WhitePattern->setText(lables_ua[6]);
+    ui->BlackPattern->setText(lables_ua[7]);
+    ui->Sharpness->setText(lables_ua[8]);
+    ui->Dots->setText(lables_ua[9]);
+    ui->VerticalLines->setText(lables_ua[10]);
+    ui->HorisontalLines->setText(lables_ua[11]);
+    ui->WhiteGrid->setText(lables_ua[12]);
+    ui->RedGrid->setText(lables_ua[13]);
+    ui->GreenGrid->setText(lables_ua[14]);
+    ui->BlueGrid->setText(lables_ua[15]);
+    ui->MagentaGrid->setText(lables_ua[16]);
+    ui->YellowGrid->setText(lables_ua[17]);
+    ui->BlackGrid->setText(lables_ua[18]);
+    ui->RedGridBlack->setText(lables_ua[19]);
+    ui->GreenGridBlack->setText(lables_ua[20]);
+    ui->BlueGridBlack->setText(lables_ua[21]);
+    ui->MagentaGridBlack->setText(lables_ua[22]);
+    ui->YellowGridBlack->setText(lables_ua[23]);
+    ui->Red->setText(lables_ua[24]);
+    ui->Green->setText(lables_ua[25]);
+    ui->Blue->setText(lables_ua[26]);
+    ui->Orange->setText(lables_ua[27]);
+    ui->White->setText(lables_ua[28]);
+    ui->Black->setText(lables_ua[29]);
+    ui->Gray50->setText(lables_ua[30]);
+    ui->RedGradient->setText(lables_ua[31]);
+    ui->GreenGradient->setText(lables_ua[32]);
+    ui->BlueGradient->setText(lables_ua[33]);
+    ui->OrangeGradient->setText(lables_ua[34]);
+    ui->GrayGradient->setText(lables_ua[35]);
+    ui->ColorPalette->setText(lables_ua[36]);
+    ui->ColorPalette180->setText(lables_ua[37]);
+    ui->WhiteText->setText(lables_ua[38]);
+    ui->BlackText->setText(lables_ua[39]);
+    ui->RedText->setText(lables_ua[40]);
+    ui->BlueText->setText(lables_ua[41]);
+    ui->MagentaText->setText(lables_ua[42]);
+    ui->YellowText->setText(lables_ua[43]);
+
+    ui->groupBox_8->setGeometry(340, 30, 290, 251);
+
+    QFont lable_font_("Segoe UI", 12);
+    ui->LCDCalibration->setFont(lable_font_);
+    ui->Brightness->setFont(lable_font_);
+    ui->Scope->setFont(lable_font_);
+    ui->Gamma->setFont(lable_font_);
+    ui->Convergence->setFont(lable_font_);
+    ui->ScreenSize->setFont(lable_font_);
+    ui->WhitePattern->setFont(lable_font_);
+    ui->BlackPattern->setFont(lable_font_);
+    ui->Sharpness->setFont(lable_font_);
+    ui->Dots->setFont(lable_font_);
+    ui->VerticalLines->setFont(lable_font_);
+    ui->HorisontalLines->setFont(lable_font_);
+    ui->WhiteGrid->setFont(lable_font_);
+    ui->RedGrid->setFont(lable_font_);
+    ui->GreenGrid->setFont(lable_font_);
+    ui->BlueGrid->setFont(lable_font_);
+    ui->MagentaGrid->setFont(lable_font_);
+    ui->YellowGrid->setFont(lable_font_);
+    ui->BlackGrid->setFont(lable_font_);
+    ui->RedGridBlack->setFont(lable_font_);
+    ui->GreenGridBlack->setFont(lable_font_);
+    ui->BlueGridBlack->setFont(lable_font_);
+    ui->MagentaGridBlack->setFont(lable_font_);
+    ui->YellowGridBlack->setFont(lable_font_);
+    ui->Red->setFont(lable_font_);
+    ui->Green->setFont(lable_font_);
+    ui->Blue->setFont(lable_font_);
+    ui->Orange->setFont(lable_font_);
+    ui->White->setFont(lable_font_);
+    ui->Black->setFont(lable_font_);
+    ui->Gray50->setFont(lable_font_);
+    ui->RedGradient->setFont(lable_font_);
+    ui->GreenGradient->setFont(lable_font_);
+    ui->BlueGradient->setFont(lable_font_);
+    ui->OrangeGradient->setFont(lable_font_);
+    ui->GrayGradient->setFont(lable_font_);
+    ui->ColorPalette->setFont(lable_font_);
+    ui->ColorPalette180->setFont(lable_font_);
+    ui->WhiteText->setFont(lable_font_);
+    ui->BlackText->setFont(lable_font_);
+    ui->RedText->setFont(lable_font_);
+    ui->BlueText->setFont(lable_font_);
+    ui->MagentaText->setFont(lable_font_);
+    ui->YellowText->setFont(lable_font_);
 }
 
 void MainWindow::SetENLocalization()
 {
+    setWindowTitle(title_en[0]);
     //bar menu
     ui->menuFile->setTitle(menu_en[0]);
     ui->menuSelection->setTitle(menu_en[1]);
@@ -119,6 +226,110 @@ void MainWindow::SetENLocalization()
     ui->ReadingTests->setText(buttons_en[5]);
     ui->ReadingTests->setGeometry(QRect(367, 11, 119, 34));
     ui->ReadingTests->setFont(QFont("Segoe UI", 14));
+
+    //group boxes
+    ui->groupBox->setTitle(group_box_en[0]);
+    ui->groupBox_2->setTitle(group_box_en[1]);
+    ui->groupBox_3->setTitle(group_box_en[2]);
+    ui->groupBox_4->setTitle(group_box_en[3]);
+    ui->groupBox_5->setTitle(group_box_en[4]);
+    ui->groupBox_6->setTitle(group_box_en[5]);
+    ui->groupBox_7->setTitle(group_box_en[6]);
+    ui->groupBox_8->setTitle(group_box_en[7]);
+
+    //lables
+    ui->LCDCalibration->setText(lables_en[0]);
+    ui->Brightness->setText(lables_en[1]);
+    ui->Scope->setText(lables_en[2]);
+    ui->Gamma->setText(lables_en[3]);
+    ui->Convergence->setText(lables_en[4]);
+    ui->ScreenSize->setText(lables_en[5]);
+    ui->WhitePattern->setText(lables_en[6]);
+    ui->BlackPattern->setText(lables_en[7]);
+    ui->Sharpness->setText(lables_en[8]);
+    ui->Dots->setText(lables_en[9]);
+    ui->VerticalLines->setText(lables_en[10]);
+    ui->HorisontalLines->setText(lables_en[11]);
+    ui->WhiteGrid->setText(lables_en[12]);
+    ui->RedGrid->setText(lables_en[13]);
+    ui->GreenGrid->setText(lables_en[14]);
+    ui->BlueGrid->setText(lables_en[15]);
+    ui->MagentaGrid->setText(lables_en[16]);
+    ui->YellowGrid->setText(lables_en[17]);
+    ui->BlackGrid->setText(lables_en[18]);
+    ui->RedGridBlack->setText(lables_en[19]);
+    ui->GreenGridBlack->setText(lables_en[20]);
+    ui->BlueGridBlack->setText(lables_en[21]);
+    ui->MagentaGridBlack->setText(lables_en[22]);
+    ui->YellowGridBlack->setText(lables_en[23]);
+    ui->Red->setText(lables_en[24]);
+    ui->Green->setText(lables_en[25]);
+    ui->Blue->setText(lables_en[26]);
+    ui->Orange->setText(lables_en[27]);
+    ui->White->setText(lables_en[28]);
+    ui->Black->setText(lables_en[29]);
+    ui->Gray50->setText(lables_en[30]);
+    ui->RedGradient->setText(lables_en[31]);
+    ui->GreenGradient->setText(lables_en[32]);
+    ui->BlueGradient->setText(lables_en[33]);
+    ui->OrangeGradient->setText(lables_en[34]);
+    ui->GrayGradient->setText(lables_en[35]);
+    ui->ColorPalette->setText(lables_en[36]);
+    ui->ColorPalette180->setText(lables_en[37]);
+    ui->WhiteText->setText(lables_en[38]);
+    ui->BlackText->setText(lables_en[39]);
+    ui->RedText->setText(lables_en[40]);
+    ui->BlueText->setText(lables_en[41]);
+    ui->MagentaText->setText(lables_en[42]);
+    ui->YellowText->setText(lables_en[43]);
+
+    ui->groupBox_8->setGeometry(340, 30, 231, 251);
+
+    QFont lable_font_("Segoe UI", 14);
+    ui->LCDCalibration->setFont(lable_font_);
+    ui->Brightness->setFont(lable_font_);
+    ui->Scope->setFont(lable_font_);
+    ui->Gamma->setFont(lable_font_);
+    ui->Convergence->setFont(lable_font_);
+    ui->ScreenSize->setFont(lable_font_);
+    ui->WhitePattern->setFont(lable_font_);
+    ui->BlackPattern->setFont(lable_font_);
+    ui->Sharpness->setFont(lable_font_);
+    ui->Dots->setFont(lable_font_);
+    ui->VerticalLines->setFont(lable_font_);
+    ui->HorisontalLines->setFont(lable_font_);
+    ui->WhiteGrid->setFont(lable_font_);
+    ui->RedGrid->setFont(lable_font_);
+    ui->GreenGrid->setFont(lable_font_);
+    ui->BlueGrid->setFont(lable_font_);
+    ui->MagentaGrid->setFont(lable_font_);
+    ui->YellowGrid->setFont(lable_font_);
+    ui->BlackGrid->setFont(lable_font_);
+    ui->RedGridBlack->setFont(lable_font_);
+    ui->GreenGridBlack->setFont(lable_font_);
+    ui->BlueGridBlack->setFont(lable_font_);
+    ui->MagentaGridBlack->setFont(lable_font_);
+    ui->YellowGridBlack->setFont(lable_font_);
+    ui->Red->setFont(lable_font_);
+    ui->Green->setFont(lable_font_);
+    ui->Blue->setFont(lable_font_);
+    ui->Orange->setFont(lable_font_);
+    ui->White->setFont(lable_font_);
+    ui->Black->setFont(lable_font_);
+    ui->Gray50->setFont(lable_font_);
+    ui->RedGradient->setFont(lable_font_);
+    ui->GreenGradient->setFont(lable_font_);
+    ui->BlueGradient->setFont(lable_font_);
+    ui->OrangeGradient->setFont(lable_font_);
+    ui->GrayGradient->setFont(lable_font_);
+    ui->ColorPalette->setFont(lable_font_);
+    ui->ColorPalette180->setFont(lable_font_);
+    ui->WhiteText->setFont(lable_font_);
+    ui->BlackText->setFont(lable_font_);
+    ui->RedText->setFont(lable_font_);
+    ui->BlueText->setFont(lable_font_);
+    ui->MagentaText->setFont(lable_font_);
+    ui->YellowText->setFont(lable_font_);
 }
 
 void MainWindow::createTestWindow()
@@ -592,7 +803,9 @@ void MainWindow::on_actionTests_for_LCD_monitors_triggered()
 void MainWindow::on_actionPreferences_triggered()
 {
     if (preference == nullptr) {
-        preference = new Preference(auto_test_timeout_, save_settings_);
+        preference = new Preference(auto_test_timeout_,
+                                    save_settings_,
+                                    language_state_ == LanguageMode::kEN ? true : false);
         connect(preference,
                 &Preference::preferenceClosed,
                 this,
@@ -621,7 +834,7 @@ void MainWindow::handlePreferenceClosed()
 void MainWindow::on_actionAbout_triggered()
 {
     if (about == nullptr) {
-        about = new About();
+        about = new About(language_state_ == LanguageMode::kEN ? true : false);
     }
 
     about->show();
