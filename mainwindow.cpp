@@ -40,6 +40,8 @@ MainWindow::MainWindow(QWidget *parent)
                                ? window_height_size_[height_]
                                : 1;
     this->setFixedSize(QSize(width_window_size_, height_ / delta_height_));
+    ui->Lable1Hider->installEventFilter(this);
+    ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0] : page_hints_ua[0]);
 }
 
 MainWindow::~MainWindow()
@@ -82,8 +84,7 @@ void MainWindow::SetUALocalization()
     ui->ColorTests->setGeometry(QRect(338, 11, 160, 34));
 
     ui->ReadingTests->setText(buttons_ua[5]);
-    ui->ReadingTests->setGeometry(QRect(504, 5, 200, 45));
-    ui->ReadingTests->setFont(QFont("Segoe UI", 12));
+    ui->ReadingTests->setGeometry(QRect(504, 11, 200, 34));
 
     //group boxes
     ui->groupBox->setTitle(group_box_ua[0]);
@@ -141,7 +142,7 @@ void MainWindow::SetUALocalization()
     ui->MagentaText->setText(lables_ua[42]);
     ui->YellowText->setText(lables_ua[43]);
 
-    ui->groupBox_8->setGeometry(340, 30, 290, 251);
+    ui->groupBox_8->setGeometry(409, 30, 290, 251);
 
     QFont lable_font_("Segoe UI", 12);
     ui->LCDCalibration->setFont(lable_font_);
@@ -188,6 +189,8 @@ void MainWindow::SetUALocalization()
     ui->BlueText->setFont(lable_font_);
     ui->MagentaText->setFont(lable_font_);
     ui->YellowText->setFont(lable_font_);
+
+    ui->LHints->setText(page_hints_ua[ui->stackedWidget->currentIndex()]);
 }
 
 void MainWindow::SetENLocalization()
@@ -225,7 +228,6 @@ void MainWindow::SetENLocalization()
 
     ui->ReadingTests->setText(buttons_en[5]);
     ui->ReadingTests->setGeometry(QRect(367, 11, 119, 34));
-    ui->ReadingTests->setFont(QFont("Segoe UI", 14));
 
     //group boxes
     ui->groupBox->setTitle(group_box_en[0]);
@@ -283,7 +285,7 @@ void MainWindow::SetENLocalization()
     ui->MagentaText->setText(lables_en[42]);
     ui->YellowText->setText(lables_en[43]);
 
-    ui->groupBox_8->setGeometry(340, 30, 231, 251);
+    ui->groupBox_8->setGeometry(409, 30, 231, 251);
 
     QFont lable_font_("Segoe UI", 14);
     ui->LCDCalibration->setFont(lable_font_);
@@ -330,6 +332,8 @@ void MainWindow::SetENLocalization()
     ui->BlueText->setFont(lable_font_);
     ui->MagentaText->setFont(lable_font_);
     ui->YellowText->setFont(lable_font_);
+
+    ui->LHints->setText(page_hints_en[ui->stackedWidget->currentIndex()]);
 }
 
 void MainWindow::createTestWindow()
@@ -402,25 +406,28 @@ std::vector<const char *> MainWindow::getVector()
 void MainWindow::on_CalibrationTests_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
-
+    ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0] : page_hints_ua[0]);
 }
 
 
 void MainWindow::on_GridTests_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[1] : page_hints_ua[1]);
 }
 
 
 void MainWindow::on_ColorTests_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+    ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2] : page_hints_ua[2]);
 }
 
 
 void MainWindow::on_ReadingTests_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
+    ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[3] : page_hints_ua[3]);
 }
 
 
@@ -818,6 +825,21 @@ void MainWindow::on_actionPreferences_triggered()
     if (preference != nullptr) {
         delete preference;
         preference = nullptr;
+    }
+}
+
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    if (obj == (QObject *) ui->Lable1Hider) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText("Here loh\n");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText("Here ne loh\n");
+        }
+        return true;
+    } else {
+        // pass the event on to the parent class
+        return QWidget::eventFilter(obj, event);
     }
 }
 

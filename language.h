@@ -34,7 +34,7 @@ static QString buttons_ua[]{"Запустити вибрані тести",
                             "Калібрувальні тести",
                             "Сіткові тести",
                             "Тести кольором",
-                            "Тести на перевірку\nчитабельності"};
+                            "Тести читабельності"};
 
 static QString buttons_en[]{"Run Selected Tests",
                             "Auto Run Selected Tests",
@@ -192,5 +192,35 @@ static QString about_en[]{
 static QString title_ua[]{"Тестування монітору", "Про програму", "Налаштування тестування монітору"};
 
 static QString title_en[]{"Monitor testing", "About", "Display testing preferences"};
+
+static QString page_hints_en[]{
+    "   On this page, you can find several tests for monitor calibration. "
+    "These tests are suitable for both classic (CRT)\nand LCD displays."
+    "\n   Move your cursor over a test name to get a description about it, "
+    "and to see a small thumbnail about the\ntest screen.",
+    "   Grid tests are ideal for checking, and tuning the display geometry, and convergence "
+    "settings.",
+    "   On this page, you can find several tests to check your computer and monitor your ability "
+    "to display colors\nand see dead/stuck pixels on LCD displays.",
+    "   On this page, you can find several reading tests. With these tests, you can check your "
+    "monitor focus on\nthe whole screen and with different font and background colors."};
+
+static QString page_hints_ua[]{
+    "   На цій сторінці ви можете знайти кілька тестів для калібрування монітора. "
+    "Ці тести підходять як для\nкласичних (ЕПТ) так і для рідкокристалічних дисплеїв."
+    "\n   Наведіть курсор на назву тесту, щоб отримати його опис "
+    "та побачити невелику мініатюру екрана тесту.",
+    "   Тести сітки ідеально підходять для перевірки та налаштування геометрії дисплея і "
+    "збіжності\nналаштувань.",
+    "   На цій сторінці ви можете знайти декілька тестів для перевірки вашого комп'ютера та "
+    "моніторингу\nвашої здатності відображати кольори та бачити мертві/биті пікселі на "
+    "РК-дисплеях.",
+    "   На цій сторінці ви можете знайти декілька тестів на читання. За допомогою цих тестів ви\n"
+    "можете перевірити фокус монітора на всьому екрані та з різними кольорами шрифту і тла."};
+
+static QString read_en_en[]{
+    "   With this test, you can check your monitor's focus on the whole screen. Text reading\n"
+    "is especially important for all kinds of desktop work like word processing and web surfing,\n"
+    "where clear, sharp letters relax the eyes"};
 
 #endif // LANGUAGE_H

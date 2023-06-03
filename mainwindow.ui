@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QGroupBox" name="groupBox">
@@ -284,6 +284,19 @@
       </property>
       <property name="text">
        <string>Horizontal Lines</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Lable1Hider">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>50</y>
+        <width>201</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -859,7 +872,7 @@
      <widget class="QGroupBox" name="groupBox_8">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>409</x>
         <y>30</y>
         <width>231</width>
         <height>251</height>
@@ -878,7 +891,7 @@
      <widget class="QCheckBox" name="RedText">
       <property name="geometry">
        <rect>
-        <x>351</x>
+        <x>420</x>
         <y>127</y>
         <width>341</width>
         <height>32</height>
@@ -896,7 +909,7 @@
      <widget class="QCheckBox" name="BlueText">
       <property name="geometry">
        <rect>
-        <x>351</x>
+        <x>420</x>
         <y>165</y>
         <width>361</width>
         <height>32</height>
@@ -914,7 +927,7 @@
      <widget class="QCheckBox" name="BlackText">
       <property name="geometry">
        <rect>
-        <x>351</x>
+        <x>420</x>
         <y>89</y>
         <width>321</width>
         <height>32</height>
@@ -932,7 +945,7 @@
      <widget class="QCheckBox" name="WhiteText">
       <property name="geometry">
        <rect>
-        <x>351</x>
+        <x>420</x>
         <y>51</y>
         <width>321</width>
         <height>32</height>
@@ -950,7 +963,7 @@
      <widget class="QCheckBox" name="MagentaText">
       <property name="geometry">
        <rect>
-        <x>351</x>
+        <x>420</x>
         <y>203</y>
         <width>371</width>
         <height>32</height>
@@ -968,9 +981,9 @@
      <widget class="QCheckBox" name="YellowText">
       <property name="geometry">
        <rect>
-        <x>351</x>
+        <x>420</x>
         <y>241</y>
-        <width>401</width>
+        <width>351</width>
         <height>32</height>
        </rect>
       </property>
@@ -1118,6 +1131,46 @@
     <property name="text">
      <string>Reading tests</string>
     </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_9">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>470</y>
+      <width>781</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Hints</string>
+    </property>
+    <widget class="QLabel" name="LHints">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>761</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

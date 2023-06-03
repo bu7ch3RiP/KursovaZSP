@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QColor>
+#include <QEvent>
+#include <QLabel>
 #include <QMainWindow>
+#include <QMouseEvent>
 #include "calibration_focus_test.h"
 #include "color_test.h"
 #include "grid_test.h"
@@ -31,6 +34,8 @@ public:
     std::vector<uint8_t> getCodeVector();
     std::vector<QColor> getColorVector();
     std::vector<uint8_t> getFocusVector();
+
+    bool eventFilter(QObject *obj, QEvent *event);
 
 protected:
 private slots:
