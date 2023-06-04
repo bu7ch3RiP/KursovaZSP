@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QGroupBox" name="groupBox">
@@ -312,6 +312,176 @@
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="CalibrationHiderBrightnes">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>90</y>
+        <width>201</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CalibrationHiderScope">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>120</y>
+        <width>201</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CalibrationHiderGamma">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>160</y>
+        <width>201</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CalibrationHiderConvergence">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>200</y>
+        <width>201</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CalibrationHiderScreenSize">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>240</y>
+        <width>201</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CalibrationHiderWhitePattern">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>50</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CalibrationHiderBlackPattern">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>90</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CalibrationHiderSharpness">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>120</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CalibrationHiderDotes">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>160</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CalibrationHiderVertical">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>200</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CalibrationHiderHorizontal">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>240</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>HorisontalLines</zorder>
+     <zorder>VerticalLines</zorder>
+     <zorder>BlackPattern</zorder>
+     <zorder>Brightness</zorder>
+     <zorder>groupBox</zorder>
+     <zorder>groupBox_2</zorder>
+     <zorder>LCDCalibration</zorder>
+     <zorder>Gamma</zorder>
+     <zorder>ScreenSize</zorder>
+     <zorder>Scope</zorder>
+     <zorder>Convergence</zorder>
+     <zorder>WhitePattern</zorder>
+     <zorder>Sharpness</zorder>
+     <zorder>Dots</zorder>
+     <zorder>Lable1Hider</zorder>
+     <zorder>CalibrationPicture</zorder>
+     <zorder>CalibrationHiderBrightnes</zorder>
+     <zorder>CalibrationHiderScope</zorder>
+     <zorder>CalibrationHiderGamma</zorder>
+     <zorder>CalibrationHiderConvergence</zorder>
+     <zorder>CalibrationHiderScreenSize</zorder>
+     <zorder>CalibrationHiderWhitePattern</zorder>
+     <zorder>CalibrationHiderBlackPattern</zorder>
+     <zorder>CalibrationHiderSharpness</zorder>
+     <zorder>CalibrationHiderDotes</zorder>
+     <zorder>CalibrationHiderVertical</zorder>
+     <zorder>CalibrationHiderHorizontal</zorder>
     </widget>
     <widget class="QWidget" name="page_2">
      <widget class="QGroupBox" name="groupBox_3">

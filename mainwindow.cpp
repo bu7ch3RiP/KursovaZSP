@@ -42,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->setFixedSize(QSize(width_window_size_, height_ / delta_height_));
     SetHoveredLables();
     ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0] : page_hints_ua[0]);
+    SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/CalibrationTestPreview.png");
 }
 
 MainWindow::~MainWindow()
@@ -414,6 +415,7 @@ void MainWindow::on_CalibrationTests_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
     ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0] : page_hints_ua[0]);
+    SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/CalibrationTestPreview.png");
 }
 
 void MainWindow::on_GridTests_clicked()
@@ -835,7 +837,19 @@ void MainWindow::on_actionPreferences_triggered()
 
 void MainWindow::SetHoveredLables()
 {
-    ui->Lable1Hider->installEventFilter(this);
+    //Calibration test
+    ui->Lable1Hider->installEventFilter(this);                  // +
+    ui->CalibrationHiderBrightnes->installEventFilter(this);    // +
+    ui->CalibrationHiderScope->installEventFilter(this);        // +
+    ui->CalibrationHiderGamma->installEventFilter(this);        // +
+    ui->CalibrationHiderConvergence->installEventFilter(this);  // +
+    ui->CalibrationHiderScreenSize->installEventFilter(this);   // +
+    ui->CalibrationHiderWhitePattern->installEventFilter(this); // +
+    ui->CalibrationHiderBlackPattern->installEventFilter(this); // +
+    ui->CalibrationHiderSharpness->installEventFilter(this);    // +
+    ui->CalibrationHiderDotes->installEventFilter(this);        // +
+    ui->CalibrationHiderVertical->installEventFilter(this);     // +
+    ui->CalibrationHiderHorizontal->installEventFilter(this);   // +
 
     //Read Test
     ui->HideWhiteTextOnBlack->installEventFilter(this); // +
@@ -880,12 +894,153 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
     if (obj == (QObject *) ui->Lable1Hider) {
         if (event->type() == QEvent::Enter) {
-            ui->LHints->setText("Here loh\n");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[0]
+                                                                     : calibration_test_ua[0]);
+            SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/LCD_Calibration.png");
         } else if (event->type() == QEvent::Leave) {
-            ui->LHints->setText("Here ne loh\n");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
         }
         return true;
-    } else if (obj == (QObject *) ui->HideWhiteTextOnBlack) {
+    } else if (obj == (QObject *) ui->CalibrationHiderBrightnes) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[1]
+                                                                     : calibration_test_ua[1]);
+            SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/BrightnessAndContrast.png");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->CalibrationHiderScope) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[2]
+                                                                     : calibration_test_ua[2]);
+            SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/Scope.png");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->CalibrationHiderGamma) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[3]
+                                                                     : calibration_test_ua[3]);
+            SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/Gamma.png");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->CalibrationHiderConvergence) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[4]
+                                                                     : calibration_test_ua[4]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationConveragePreviwe.png");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->CalibrationHiderScreenSize) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[5]
+                                                                     : calibration_test_ua[5]);
+            SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/ScreenSizePreview.png");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->CalibrationHiderWhitePattern) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[6]
+                                                                     : calibration_test_ua[6]);
+            SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/WhitePattern.png");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->CalibrationHiderBlackPattern) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[6]
+                                                                     : calibration_test_ua[6]);
+            SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/BlackPattern.png");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->CalibrationHiderSharpness) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[6]
+                                                                     : calibration_test_ua[6]);
+            SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/Sharpness.png");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->CalibrationHiderDotes) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[6]
+                                                                     : calibration_test_ua[6]);
+            SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/DotesPreview.png");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->CalibrationHiderVertical) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[6]
+                                                                     : calibration_test_ua[6]);
+            SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/VerticalLinesPreview.png");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->CalibrationHiderHorizontal) {
+        if (event->type() == QEvent::Enter) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? calibration_test_en[6]
+                                                                     : calibration_test_ua[6]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/HorizontalLinesPreview.png");
+        } else if (event->type() == QEvent::Leave) {
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0]
+                                                                     : page_hints_ua[0]);
+            SetPreview(ui->CalibrationPicture,
+                       ":/color/palette/pictures/CalibrationTestPreview.png");
+        }
+        return true;
+    }
+
+    else if (obj == (QObject *) ui->HideWhiteTextOnBlack) {
         if (event->type() == QEvent::Enter) {
             SetPreview(ui->ReadPicture, ":/color/palette/pictures/WhiteBlackReadPreview.png");
             ui->LHints->setText(language_state_ == LanguageMode::kEN ? read_en_en : read_en_ua);
@@ -1189,6 +1344,9 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
         // pass the event on to the parent class
         return QWidget::eventFilter(obj, event);
     }
+
+    //ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0] : page_hints_ua[0]);
+    //SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/CalibrationTestPreview.png");
 }
 
 void MainWindow::on_actionExit_triggered()

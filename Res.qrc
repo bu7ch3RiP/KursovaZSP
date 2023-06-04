@@ -44,5 +44,11 @@
         <file>pictures/ColorTestRed.png</file>
         <file>pictures/ColorTestRedGradient.png</file>
         <file>pictures/ColorTestWhite.png</file>
+        <file>pictures/CalibrationTestPreview.png</file>
+        <file>pictures/DotesPreview.png</file>
+        <file>pictures/HorizontalLinesPreview.png</file>
+        <file>pictures/ScreenSizePreview.png</file>
+        <file>pictures/VerticalLinesPreview.png</file>
+        <file>pictures/CalibrationConveragePreviwe.png</file>
     </qresource>
 </RCC>

@@ -368,4 +368,58 @@ static QString color_test_ua[]{
 
     "Палітра насичиних та легких відтінків обернена на 180 градусів."};
 
+static QString calibration_test_en[]{
+    "   Use this test screen to perform automatic screen calibration. LCD panels using digital "
+    "(DVI) "
+    "connector cables\ndo not require screen adjustments.",
+
+    "   This test screen helps you to select the right values for your display. First of all, set "
+    "the "
+    "brightness of your\nmonitor to the max, then decrease it until the color around the test "
+    "patterns appears black, then adjust the\ncontrast until you are able to see all twenty shades "
+    "of gray in both rows.",
+
+    "   Use this test screen to perform basic screen geometry calibration, and to adjust advanced "
+    "settings in the\ncase they are available in your monitor configuration menu.",
+
+    "   Bring up your gamma correction controls. Adjust the overall gamma until the model and top "
+    "sections of the\ngrey square on the right are the same brightness.",
+
+    "   This calibration test screen is designed for classic (CRT) monitors to check their ability "
+    "to "
+    "position the\nred, green and blue electron beams accurately.",
+
+    "   The test to calibrate the perfect screen resolution",
+
+    "   Focus is not the only effect that reduces image sharpness. Take also a look at the "
+    "convergence and\ndecrease the contrast if necessary. Use the focus test screen to search for "
+    "differences between the\ncenter pattern and the corners."};
+
+static QString calibration_test_ua[]{
+    "   Використовуйте цей тестовий екран для автоматичного калібрування екрана. РК-панелі,\nщо "
+    "використовують кабелі з цифровим (DVI) роз'ємом, не потребують налаштування екрана.",
+
+    "   Цей тестовий екран допоможе вам вибрати правильні значення для вашого дисплея. Перш\nза "
+    "все, "
+    "встановіть яскравість монітора на максимум, потім зменшуйте її до тих пір, поки\nколір "
+    "навколо "
+    "тестових зразків не стане чорним, після чого відрегулюйте контрастність до тих пір,\nпоки не "
+    "зможете побачити всі двадцять відтінків сірого в обох рядах.",
+
+    "   Використовуйте цей тестовий екран для виконання базового калібрування геометрії екрана, а\n"
+    "також для налаштування додаткових параметрів, якщо вони доступні в меню конфігурації "
+    "монітора.",
+
+    "   Відкрийте елементи керування гамма-корекції. Налаштуйте загальну гаму так, щоб модель і\n"
+    "верхні секції сірого квадрата праворуч мали однакову яскравість.",
+
+    "   Цей тестовий екран калібрування призначений для класичних (ЕПТ) моніторів, щоб перевірити\n"
+    "їхню здатність точно позиціонувати червоний, зелений і синій електронні промені.",
+
+    "   Тест для калібрування ідеальної роздільної здатності екрана",
+
+    "   Фокусування - не єдиний ефект, який знижує різкість зображення. Погляньте також на\n"
+    "конвергенцію і зменшіть контрастність, якщо це необхідно. Використовуйте екран перевірки\n"
+    "фокусування для пошуку відмінностей між центральною частиною зображення і кутами."};
+
 #endif // LANGUAGE_H
