@@ -228,4 +228,144 @@ static QString read_en_ua{
     "екрані.\n   Читання тексту особливо важливе для всіх видів настільної роботи, таких як "
     "обробка текстів і веб-\nсерфінг, де чіткі, різкі літери розслаблюють очі"};
 
+static QString color_test_en[]{
+    "   This solid red screen is ideal to check the color uniformity of your monitor. LCD users "
+    "are also able to check\nthe display area for dead (always dark) red sub-pixels. You should "
+    "degauss your classic (CRT) display before\nthis test. Magnetic fields (e.g. speakers) near "
+    "the monitor can produce color distortions.\n   Small imperfections are common in LCD "
+    "monitors, please refer to your user's manual for the manufacturer's dead\npixel policy.",
+
+    "   This solid green screen is ideal to check the color uniformity of your monitor. LCD users "
+    "are also able to\ncheck the display area for dead (always dark) green sub-pixels. You should "
+    "degauss your classic (CRT)\ndisplay before this test. Magnetic fields (e.g. speakers) "
+    "near the monitor can produce color distortions.\n   Small imperfections are common in LCD "
+    "monitors, please refer to your user's manual for the\nmanufacturer's dead pixel policy.",
+
+    "   This solid blue screen is ideal to check the color uniformity of your monitor. LCD users "
+    "are also able to\ncheck the display area for dead (always dark) blue sub-pixels. You should "
+    "degauss your classic (CRT)\ndisplay before this test. Magnetic fields (e.g. speakers) near "
+    "the monitor can produce color distortions.\n   Small imperfections are common in LCD "
+    "monitors, please refer to your user's manual for the\nmanufacturer's dead pixel policy.",
+
+    "   This solid orange screen is ideal to check the color uniformity of your monitor. You "
+    "should degauss your\nclassic (CRT) display before this test. Magnetic fields (e.g. speakers) "
+    "near the monitor can produce\ncolor distortions.",
+
+    "   Completely white screen for checking the backlight brightness and uniformity of the LCD "
+    "monitor and is\nalso good to find dead (always dark) pixels.\n   Small imperfections are "
+    "common in LCD monitors, please refer to your user's manual for the\nmanufacturer's dead pixel "
+    "policy.",
+
+    "   Completely black screen for checking the backlight brightness and uniformity of the LCD "
+    "monitor and is\nalso good to find dead (always dark) pixels.\n   Small imperfections are "
+    "common in LCD monitors, please refer to your user's manual for the\nmanufacturer's dead pixel "
+    "policy.",
+
+    "   You should degauss your classic (CRT) display before this test. Magnetic fields (e.g. "
+    "speakers) near the\nmonitor can produce color distortions.\n   Small imperfections are common "
+    "in LCD monitors, please refer to your user's manual for the manufacturer's\ndead pixel "
+    "policy.",
+
+    "   Gradient fill is an ideal test to check the monitor's ability to display a smooth color "
+    "transition from black to\nred. It is recommended to run this test in True color mode. Several "
+    "color management solutions can cause\nsome roughness in the color transition, this is a "
+    "normal "
+    "phenomenon.",
+
+    "   Gradient fill is an ideal test to check the monitor's ability to display a smooth color "
+    "transition from black to\ngreen. It is recommended to run this test in True color mode. "
+    "Several color management solutions can cause\nsome roughness in the color transition, this is "
+    "a normal phenomenon.",
+
+    "   Gradient fill is an ideal test to check the monitor's ability to display a smooth color "
+    "transition from black to\nblue. It is recommended to run this test in True color mode. "
+    "Several "
+    "color management solutions can cause\nsome roughness in the color transition, this is a "
+    "normal "
+    "phenomenon.",
+
+    "   Gradient fill is an ideal test to check the monitor's ability to display a smooth color "
+    "transition from black to\norange. It is recommended to run this test in True color mode. "
+    "Several color management solutions can cause\nsome roughness in the color transition, this is "
+    "a normal phenomenon.",
+
+    "   Gradient fill is an ideal test to check the monitor's ability to display a smooth color "
+    "transition from black to\ngray. It is recommended to run this test in True color mode. "
+    "Several "
+    "color management solutions can cause\nsome roughness in the color transition, this is a "
+    "normal "
+    "phenomenon.",
+
+    "Hue Saturation Lightness palette.",
+
+    "Hue Saturation Lightness palette roteted by 180*."};
+
+static QString color_test_ua[]{
+    "   Цей суцільно червоний екран ідеально підходить для перевірки однорідності кольорів вашого\n"
+    "монітора. Користувачі рідкокристалічних моніторів також можуть перевірити область "
+    "відображення на\nнаявність мертвих (завжди темних) червоних субпікселів.\n   Невеликі дефекти "
+    "характерні для РК-моніторів, будь ласка, зверніться до посібника користувача, щоб\nдізнатися "
+    "про політику виробника щодо \"мертвих пікселів\".",
+
+    "   Цей суцільний зелений екран ідеально підходить для перевірки однорідності кольорів вашого\n"
+    "монітора. Користувачі рідкокристалічних дисплеїв також можуть перевірити область відображення "
+    "на\nнаявність мертвих (завжди темних) зелених субпікселів.\n   Невеликі дефекти характерні "
+    "для РК-моніторів, будь ласка, зверніться до посібника користувача, щоб\nдізнатися про "
+    "політику виробника щодо \"мертвих пікселів\".",
+
+    "   Цей суцільний синій екран ідеально підходить для перевірки однорідності кольорів вашого\n"
+    "монітора. Користувачі рідкокристалічних дисплеїв також можуть перевірити область відображення "
+    "на\nнаявність мертвих (завжди темних) синіх субпікселів.\n   Невеликі дефекти характерні для "
+    "РК-моніторів, будь "
+    "ласка, зверніться до посібника користувача, щоб\nдізнатися про політику виробника щодо "
+    "\"мертвих пікселів\".",
+
+    "   Цей суцільний помаранчевий екран ідеально підходить для перевірки однорідності кольорів "
+    "вашого\nмонітора.",
+
+    "   Повністю білий екран для перевірки яскравості та рівномірності підсвічування РК-монітора, "
+    "а також\nдля пошуку \"мертвих\"(завжди темних) пікселів.\n   Невеликі дефекти є звичайним "
+    "явищем для РК-моніторів, будь ласка, зверніться до посібника\nкористувача для ознайомлення з "
+    "політикою виробника щодо мертвих пікселів.",
+
+    "   Повністю чорний екран для перевірки яскравості та рівномірності підсвічування РК-монітора, "
+    "а також\nдля пошуку \"мертвих\" (завжди темних) пікселів.\n   Невеликі дефекти є звичайним "
+    "явищем для РК-моніторів, будь ласка, зверніться до посібника\nкористувача для ознайомлення з "
+    "політикою виробника щодо мертвих пікселів.",
+
+    "   Перед проведенням цього тесту слід розмагнітити класичний (ЕПТ) монітор. Магнітні поля "
+    "(наприклад,\nдинаміки) поблизу монітора можуть спричинити спотворення кольорів.\n   Невеликі "
+    "дефекти є звичайним явищем для РК-моніторів, будь ласка, зверніться до посібника\nкористувача "
+    "для ознайомлення з політикою виробника щодо мертвих пікселів.",
+
+    "   Градієнтна заливка - ідеальний тест для перевірки здатності монітора відображати плавний "
+    "перехід\nвід чорного до червоного кольору. Рекомендується запускати цей тест у режимі "
+    "\"Справжній колір\".\nДеякі рішення для керування кольором можуть спричинити деяку шорсткість "
+    "у переході кольорів, це\nнормальне явище.",
+
+    "   Градієнтна заливка - ідеальний тест для перевірки здатності монітора відображати плавний "
+    "перехід\nвід чорного до зеленого кольору. Рекомендується запускати цей тест у режимі "
+    "\"Справжній колір\".\nДеякі рішення для керування кольором можуть спричинити деяку шорсткість "
+    "у переході кольорів, це\nнормальне явище.",
+
+    "   Градієнтна заливка - ідеальний тест для перевірки здатності монітора відображати плавний "
+    "перехід\nвід чорного до синього кольору. Рекомендується запускати цей тест у режимі "
+    "\"Справжній колір\".\nДеякі рішення для керування кольором можуть спричинити деяку шорсткість "
+    "у переході кольорів, це\nнормальне явище.",
+
+    "   Градієнтна заливка - ідеальний тест для перевірки здатності монітора відображати плавний "
+    "перехід\nвід чорного до оранжевого кольору. Рекомендується запускати цей тест у режимі "
+    "\"Справжній колір\".\nДеякі рішення для керування кольором можуть спричинити деяку шорсткість "
+    "у переході кольорів, це\nнормальне явище.",
+
+    "   Градієнтна заливка - ідеальний тест для перевірки здатності монітора відображати плавний "
+    "перехід\nвід чорного до сірого кольору. Рекомендується запускати цей тест у режимі "
+    "\"Справжній "
+    "колір\".\nДеякі рішення для керування кольором можуть спричинити деяку шорсткість у переході "
+    "кольорів, це\nнормальне явище.",
+
+    "Палітра насичиних та легких відтінків.",
+
+    "Палітра насичиних та легких відтінків обернена на 180 градусів."};
+
 #endif // LANGUAGE_H

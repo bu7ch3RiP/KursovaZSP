@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QGroupBox" name="groupBox">
@@ -745,6 +745,19 @@
       <property name="title">
        <string>Solid Fills</string>
       </property>
+      <widget class="QLabel" name="ColorHideRed">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>29</y>
+         <width>131</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_6">
       <property name="geometry">
@@ -1049,6 +1062,220 @@
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="GridHideBlueWhite">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>170</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideGreen">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>100</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideBlue">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>135</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideOrange">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>170</y>
+        <width>110</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideWhite">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>210</y>
+        <width>110</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideBlack">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>250</y>
+        <width>110</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideGray">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>290</y>
+        <width>110</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideRedGradient">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>60</y>
+        <width>191</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideGreenGradient">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>100</y>
+        <width>191</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideBlueGradient">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>130</y>
+        <width>191</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideOrangeGradient">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>170</y>
+        <width>191</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideGreyGradient">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>210</y>
+        <width>191</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideColorPalette">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>290</y>
+        <width>191</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ColorHideColorPalette180">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>330</y>
+        <width>191</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>Red</zorder>
+     <zorder>groupBox_5</zorder>
+     <zorder>groupBox_6</zorder>
+     <zorder>groupBox_7</zorder>
+     <zorder>Black</zorder>
+     <zorder>Gray50</zorder>
+     <zorder>White</zorder>
+     <zorder>Orange</zorder>
+     <zorder>Blue</zorder>
+     <zorder>Green</zorder>
+     <zorder>RedGradient</zorder>
+     <zorder>OrangeGradient</zorder>
+     <zorder>GreenGradient</zorder>
+     <zorder>BlueGradient</zorder>
+     <zorder>GrayGradient</zorder>
+     <zorder>ColorPalette180</zorder>
+     <zorder>ColorPalette</zorder>
+     <zorder>ColorPicture</zorder>
+     <zorder>GridHideBlueWhite</zorder>
+     <zorder>ColorHideGreen</zorder>
+     <zorder>ColorHideBlue</zorder>
+     <zorder>ColorHideOrange</zorder>
+     <zorder>ColorHideWhite</zorder>
+     <zorder>ColorHideBlack</zorder>
+     <zorder>ColorHideGray</zorder>
+     <zorder>ColorHideRedGradient</zorder>
+     <zorder>ColorHideGreenGradient</zorder>
+     <zorder>ColorHideBlueGradient</zorder>
+     <zorder>ColorHideOrangeGradient</zorder>
+     <zorder>ColorHideGreyGradient</zorder>
+     <zorder>ColorHideColorPalette</zorder>
+     <zorder>ColorHideColorPalette180</zorder>
     </widget>
     <widget class="QWidget" name="page_4">
      <widget class="QGroupBox" name="groupBox_8">
@@ -1411,7 +1638,7 @@
       <x>10</x>
       <y>470</y>
       <width>781</width>
-      <height>141</height>
+      <height>151</height>
      </rect>
     </property>
     <property name="title">
@@ -1423,7 +1650,7 @@
        <x>10</x>
        <y>30</y>
        <width>761</width>
-       <height>101</height>
+       <height>111</height>
       </rect>
      </property>
      <property name="font">
@@ -1444,19 +1671,6 @@
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
     </widget>
-   </widget>
-   <widget class="QLabel" name="GridHideBlueWhite">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>220</y>
-      <width>131</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

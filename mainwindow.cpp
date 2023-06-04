@@ -427,6 +427,7 @@ void MainWindow::on_ColorTests_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
     ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2] : page_hints_ua[2]);
+    SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
 }
 
 void MainWindow::on_ReadingTests_clicked()
@@ -856,7 +857,23 @@ void MainWindow::SetHoveredLables()
     ui->GridHideRedWhite->installEventFilter(this);     // +
     ui->GridHideWhite->installEventFilter(this);        // +
     ui->GridHideYellowWhite->installEventFilter(this);  // +
-    ui->GridHideYellowBlack->installEventFilter(this);
+    ui->GridHideYellowBlack->installEventFilter(this);  // +
+
+    //Color test
+    ui->ColorHideRed->installEventFilter(this);             //+
+    ui->ColorHideGreen->installEventFilter(this);           //+
+    ui->ColorHideBlue->installEventFilter(this);            //+
+    ui->ColorHideOrange->installEventFilter(this);          //+
+    ui->ColorHideWhite->installEventFilter(this);           //+
+    ui->ColorHideBlack->installEventFilter(this);           //+
+    ui->ColorHideGray->installEventFilter(this);            //+
+    ui->ColorHideRedGradient->installEventFilter(this);     //+
+    ui->ColorHideGreenGradient->installEventFilter(this);   //+
+    ui->ColorHideBlueGradient->installEventFilter(this);    //+
+    ui->ColorHideOrangeGradient->installEventFilter(this);  //+
+    ui->ColorHideGreyGradient->installEventFilter(this);    //+
+    ui->ColorHideColorPalette->installEventFilter(this);    //+
+    ui->ColorHideColorPalette180->installEventFilter(this); //+
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
@@ -1012,7 +1029,163 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
         }
         return true;
-    } else {
+    } else if (obj == (QObject *) ui->ColorHideRed) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestRed.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[0]
+                                                                     : color_test_ua[0]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideGreen) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestGreen.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[1]
+                                                                     : color_test_ua[1]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideBlue) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestBlue.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[2]
+                                                                     : color_test_ua[2]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideOrange) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestOrange.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[3]
+                                                                     : color_test_ua[3]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideWhite) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestWhite.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[4]
+                                                                     : color_test_ua[4]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideBlack) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestBlack.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[5]
+                                                                     : color_test_ua[5]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideGray) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestGray.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[6]
+                                                                     : color_test_ua[6]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideRedGradient) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestRedGradient.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[7]
+                                                                     : color_test_ua[7]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideGreenGradient) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestGreenGradient.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[8]
+                                                                     : color_test_ua[8]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideBlueGradient) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestBlueGradient.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[9]
+                                                                     : color_test_ua[9]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideOrangeGradient) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestOrangeGradient.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[10]
+                                                                     : color_test_ua[10]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideGreyGradient) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestGrayGradient.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[11]
+                                                                     : color_test_ua[11]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideColorPalette) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/Palette.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[12]
+                                                                     : color_test_ua[12]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->ColorHideColorPalette180) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/Palette180.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? color_test_en[13]
+                                                                     : color_test_ua[13]);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ColorPicture, ":/color/palette/pictures/ColorTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2]
+                                                                     : page_hints_ua[2]);
+        }
+        return true;
+    }
+
+    else {
         // pass the event on to the parent class
         return QWidget::eventFilter(obj, event);
     }

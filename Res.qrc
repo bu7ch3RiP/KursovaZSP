@@ -31,5 +31,18 @@
         <file>pictures/GridWhite.png</file>
         <file>pictures/GridYellowBlack.png</file>
         <file>pictures/GridYellowWhite.png</file>
+        <file>pictures/ColorTestBlack.png</file>
+        <file>pictures/ColorTestBlue.png</file>
+        <file>pictures/ColorTestBlueGradient.png</file>
+        <file>pictures/ColorTestGray.png</file>
+        <file>pictures/ColorTestGrayGradient.png</file>
+        <file>pictures/ColorTestGreen.png</file>
+        <file>pictures/ColorTestGreenGradient.png</file>
+        <file>pictures/ColorTestOrange.png</file>
+        <file>pictures/ColorTestOrangeGradient.png</file>
+        <file>pictures/ColorTestPreview.png</file>
+        <file>pictures/ColorTestRed.png</file>
+        <file>pictures/ColorTestRedGradient.png</file>
+        <file>pictures/ColorTestWhite.png</file>
     </qresource>
 </RCC>
