@@ -420,6 +420,7 @@ void MainWindow::on_GridTests_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
     ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[1] : page_hints_ua[1]);
+    SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
 }
 
 void MainWindow::on_ColorTests_clicked()
@@ -834,12 +835,28 @@ void MainWindow::on_actionPreferences_triggered()
 void MainWindow::SetHoveredLables()
 {
     ui->Lable1Hider->installEventFilter(this);
+
+    //Read Test
     ui->HideWhiteTextOnBlack->installEventFilter(this); // +
     ui->HideBlackTextOnWhite->installEventFilter(this); // +
     ui->HideBlueText->installEventFilter(this);         // +
     ui->HideMagentaText->installEventFilter(this);      // +
     ui->HideRedText->installEventFilter(this);          // +
-    ui->HideYellowText->installEventFilter(this);
+    ui->HideYellowText->installEventFilter(this);       // +
+
+    //Grid Test
+    ui->GridHideBlack->installEventFilter(this);        // +
+    ui->GridHideBlueBlack->installEventFilter(this);    // +
+    ui->GridHideBlueWhite->installEventFilter(this);    // +
+    ui->GridHideGreenBlack->installEventFilter(this);   // +
+    ui->GridHideGreenWhite->installEventFilter(this);   // +
+    ui->GridHideMagentaBlack->installEventFilter(this); // +
+    ui->GridHideMagentaWhite->installEventFilter(this); // +
+    ui->GridHideRedBlack->installEventFilter(this);     // +
+    ui->GridHideRedWhite->installEventFilter(this);     // +
+    ui->GridHideWhite->installEventFilter(this);        // +
+    ui->GridHideYellowWhite->installEventFilter(this);  // +
+    ui->GridHideYellowBlack->installEventFilter(this);
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
@@ -909,6 +926,90 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             SetPreview(ui->ReadPicture, ":/color/palette/pictures/ReadPageTestPreview.png");
             ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[3]
                                                                      : page_hints_ua[3]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideBlack) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridBlack.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideBlueBlack) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridBlueBlack.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideBlueWhite) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridBlueWhite.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideGreenBlack) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridGreenBlack.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideGreenWhite) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridGreenWhite.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideMagentaBlack) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridMagentaBlack.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideMagentaWhite) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridMagentaWhite.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideRedBlack) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridReadBlack.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideRedWhite) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridRedWhite.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideWhite) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridWhite.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideYellowWhite) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridYellowWhite.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->GridHideYellowBlack) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridYellowBlack.png");
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
         }
         return true;
     } else {

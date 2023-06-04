@@ -18,5 +18,18 @@
         <file>pictures/MagentaReadPreview.png</file>
         <file>pictures/RedReadPreview.png</file>
         <file>pictures/YellowReadPreview.png</file>
+        <file>pictures/GridBlack.png</file>
+        <file>pictures/GridBlueBlack.png</file>
+        <file>pictures/GridBlueWhite.png</file>
+        <file>pictures/GridGreenBlack.png</file>
+        <file>pictures/GridGreenWhite.png</file>
+        <file>pictures/GridMagentaBlack.png</file>
+        <file>pictures/GridMagentaWhite.png</file>
+        <file>pictures/GridPagePreview.png</file>
+        <file>pictures/GridReadBlack.png</file>
+        <file>pictures/GridRedWhite.png</file>
+        <file>pictures/GridWhite.png</file>
+        <file>pictures/GridYellowBlack.png</file>
+        <file>pictures/GridYellowWhite.png</file>
     </qresource>
 </RCC>
