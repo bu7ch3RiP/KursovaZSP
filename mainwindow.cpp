@@ -862,7 +862,7 @@ void MainWindow::SetHoveredLables()
     //Grid Test
     ui->GridHideBlack->installEventFilter(this);        // +
     ui->GridHideBlueBlack->installEventFilter(this);    // +
-    ui->GridHideBlueWhite->installEventFilter(this);    // +
+    ui->GridHideBlueWhite_2->installEventFilter(this);  // +
     ui->GridHideGreenBlack->installEventFilter(this);   // +
     ui->GridHideGreenWhite->installEventFilter(this);   // +
     ui->GridHideMagentaBlack->installEventFilter(this); // +
@@ -1114,7 +1114,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             SetPreview(ui->GridPicture, ":/color/palette/pictures/GridPagePreview.png");
         }
         return true;
-    } else if (obj == (QObject *) ui->GridHideBlueWhite) {
+    } else if (obj == (QObject *) ui->GridHideBlueWhite_2) {
         if (event->type() == QEvent::Enter) {
             SetPreview(ui->GridPicture, ":/color/palette/pictures/GridBlueWhite.png");
         } else if (event->type() == QEvent::Leave) {

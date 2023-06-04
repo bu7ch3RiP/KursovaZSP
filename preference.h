@@ -52,7 +52,7 @@ public:
         layout->addWidget(saveButton);
 
         setLayout(layout);
-        setFixedSize(300, 210);
+        setFixedSize(300, 230);
     }
 
     ~Preference() { emit preferenceClosed(); }

@@ -312,19 +312,6 @@
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="CalibrationHiderBrightnes">
-      <property name="geometry">
-       <rect>
-        <x>360</x>
-        <y>90</y>
-        <width>201</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="CalibrationHiderScope">
       <property name="geometry">
        <rect>
@@ -455,10 +442,19 @@
        <string/>
       </property>
      </widget>
-     <zorder>HorisontalLines</zorder>
-     <zorder>VerticalLines</zorder>
-     <zorder>BlackPattern</zorder>
-     <zorder>Brightness</zorder>
+     <widget class="QLabel" name="CalibrationHiderBrightnes">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>90</y>
+        <width>201</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
      <zorder>groupBox</zorder>
      <zorder>groupBox_2</zorder>
      <zorder>LCDCalibration</zorder>
@@ -468,20 +464,24 @@
      <zorder>Convergence</zorder>
      <zorder>WhitePattern</zorder>
      <zorder>Sharpness</zorder>
-     <zorder>Dots</zorder>
      <zorder>Lable1Hider</zorder>
      <zorder>CalibrationPicture</zorder>
-     <zorder>CalibrationHiderBrightnes</zorder>
      <zorder>CalibrationHiderScope</zorder>
      <zorder>CalibrationHiderGamma</zorder>
      <zorder>CalibrationHiderConvergence</zorder>
      <zorder>CalibrationHiderScreenSize</zorder>
      <zorder>CalibrationHiderWhitePattern</zorder>
-     <zorder>CalibrationHiderBlackPattern</zorder>
      <zorder>CalibrationHiderSharpness</zorder>
-     <zorder>CalibrationHiderDotes</zorder>
-     <zorder>CalibrationHiderVertical</zorder>
+     <zorder>Brightness</zorder>
+     <zorder>CalibrationHiderBrightnes</zorder>
+     <zorder>BlackPattern</zorder>
+     <zorder>CalibrationHiderBlackPattern</zorder>
+     <zorder>HorisontalLines</zorder>
+     <zorder>VerticalLines</zorder>
      <zorder>CalibrationHiderHorizontal</zorder>
+     <zorder>CalibrationHiderVertical</zorder>
+     <zorder>Dots</zorder>
+     <zorder>CalibrationHiderDotes</zorder>
     </widget>
     <widget class="QWidget" name="page_2">
      <widget class="QGroupBox" name="groupBox_3">
@@ -894,6 +894,46 @@
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="GridHideBlueWhite_2">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>170</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>groupBox_3</zorder>
+     <zorder>groupBox_4</zorder>
+     <zorder>MagentaGrid</zorder>
+     <zorder>YellowGrid</zorder>
+     <zorder>BlueGrid</zorder>
+     <zorder>RedGrid</zorder>
+     <zorder>WhiteGrid</zorder>
+     <zorder>GreenGrid</zorder>
+     <zorder>BlueGridBlack</zorder>
+     <zorder>BlackGrid</zorder>
+     <zorder>GreenGridBlack</zorder>
+     <zorder>RedGridBlack</zorder>
+     <zorder>YellowGridBlack</zorder>
+     <zorder>MagentaGridBlack</zorder>
+     <zorder>GridPicture</zorder>
+     <zorder>GridHideWhite</zorder>
+     <zorder>GridHideRedBlack</zorder>
+     <zorder>GridHideGreenBlack</zorder>
+     <zorder>GridHideBlueBlack</zorder>
+     <zorder>GridHideMagentaBlack</zorder>
+     <zorder>GridHideYellowBlack</zorder>
+     <zorder>GridHideBlack</zorder>
+     <zorder>GridHideRedWhite</zorder>
+     <zorder>GridHideMagentaWhite</zorder>
+     <zorder>GridHideYellowWhite</zorder>
+     <zorder>GridHideGreenWhite</zorder>
+     <zorder>GridHideBlueWhite_2</zorder>
     </widget>
     <widget class="QWidget" name="page_3">
      <widget class="QGroupBox" name="groupBox_5">
@@ -915,19 +955,6 @@
       <property name="title">
        <string>Solid Fills</string>
       </property>
-      <widget class="QLabel" name="ColorHideRed">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>29</y>
-         <width>131</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_6">
       <property name="geometry">
@@ -1414,7 +1441,19 @@
        <string/>
       </property>
      </widget>
-     <zorder>Red</zorder>
+     <widget class="QLabel" name="ColorHideRed">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>60</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
      <zorder>groupBox_5</zorder>
      <zorder>groupBox_6</zorder>
      <zorder>groupBox_7</zorder>
@@ -1446,6 +1485,8 @@
      <zorder>ColorHideGreyGradient</zorder>
      <zorder>ColorHideColorPalette</zorder>
      <zorder>ColorHideColorPalette180</zorder>
+     <zorder>Red</zorder>
+     <zorder>ColorHideRed</zorder>
     </widget>
     <widget class="QWidget" name="page_4">
      <widget class="QGroupBox" name="groupBox_8">
@@ -1656,9 +1697,9 @@
      <widget class="QLabel" name="HideYellowText">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>450</x>
         <y>240</y>
-        <width>251</width>
+        <width>231</width>
         <height>31</height>
        </rect>
       </property>
