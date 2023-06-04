@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
                                ? window_height_size_[height_]
                                : 1;
     this->setFixedSize(QSize(width_window_size_, height_ / delta_height_));
-    ui->Lable1Hider->installEventFilter(this);
+    SetHoveredLables();
     ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0] : page_hints_ua[0]);
 }
 
@@ -336,6 +336,13 @@ void MainWindow::SetENLocalization()
     ui->LHints->setText(page_hints_en[ui->stackedWidget->currentIndex()]);
 }
 
+void MainWindow::SetPreview(QLabel *preview_lable, const char *picture)
+{
+    QPixmap pix(picture);
+    preview_lable->setPixmap(
+        pix.scaled(preview_lable->width(), preview_lable->height(), Qt::KeepAspectRatio));
+}
+
 void MainWindow::createTestWindow()
 {
     if (ui->stackedWidget->currentIndex() == 0) {
@@ -409,13 +416,11 @@ void MainWindow::on_CalibrationTests_clicked()
     ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0] : page_hints_ua[0]);
 }
 
-
 void MainWindow::on_GridTests_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
     ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[1] : page_hints_ua[1]);
 }
-
 
 void MainWindow::on_ColorTests_clicked()
 {
@@ -423,13 +428,12 @@ void MainWindow::on_ColorTests_clicked()
     ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[2] : page_hints_ua[2]);
 }
 
-
 void MainWindow::on_ReadingTests_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
     ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[3] : page_hints_ua[3]);
+    SetPreview(ui->ReadPicture, ":/color/palette/pictures/ReadPageTestPreview.png");
 }
-
 
 void MainWindow::on_actionSelect_all_triggered()
 {
@@ -457,7 +461,6 @@ void MainWindow::on_actionClear_All_triggered()
 {
     clearAllCheckBoxes();
 }
-
 
 void MainWindow::on_RunTests_clicked()
 {
@@ -828,6 +831,17 @@ void MainWindow::on_actionPreferences_triggered()
     }
 }
 
+void MainWindow::SetHoveredLables()
+{
+    ui->Lable1Hider->installEventFilter(this);
+    ui->HideWhiteTextOnBlack->installEventFilter(this); // +
+    ui->HideBlackTextOnWhite->installEventFilter(this); // +
+    ui->HideBlueText->installEventFilter(this);         // +
+    ui->HideMagentaText->installEventFilter(this);      // +
+    ui->HideRedText->installEventFilter(this);          // +
+    ui->HideYellowText->installEventFilter(this);
+}
+
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
     if (obj == (QObject *) ui->Lable1Hider) {
@@ -835,6 +849,66 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             ui->LHints->setText("Here loh\n");
         } else if (event->type() == QEvent::Leave) {
             ui->LHints->setText("Here ne loh\n");
+        }
+        return true;
+    } else if (obj == (QObject *) ui->HideWhiteTextOnBlack) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/WhiteBlackReadPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? read_en_en : read_en_ua);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/ReadPageTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[3]
+                                                                     : page_hints_ua[3]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->HideBlackTextOnWhite) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/BlackWhiteReadPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? read_en_en : read_en_ua);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/ReadPageTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[3]
+                                                                     : page_hints_ua[3]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->HideBlueText) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/BlueReadPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? read_en_en : read_en_ua);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/ReadPageTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[3]
+                                                                     : page_hints_ua[3]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->HideMagentaText) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/MagentaReadPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? read_en_en : read_en_ua);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/ReadPageTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[3]
+                                                                     : page_hints_ua[3]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->HideRedText) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/RedReadPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? read_en_en : read_en_ua);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/ReadPageTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[3]
+                                                                     : page_hints_ua[3]);
+        }
+        return true;
+    } else if (obj == (QObject *) ui->HideYellowText) {
+        if (event->type() == QEvent::Enter) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/YellowReadPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? read_en_en : read_en_ua);
+        } else if (event->type() == QEvent::Leave) {
+            SetPreview(ui->ReadPicture, ":/color/palette/pictures/ReadPageTestPreview.png");
+            ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[3]
+                                                                     : page_hints_ua[3]);
         }
         return true;
     } else {

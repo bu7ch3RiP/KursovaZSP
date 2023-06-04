@@ -215,12 +215,17 @@ static QString page_hints_ua[]{
     "   На цій сторінці ви можете знайти декілька тестів для перевірки вашого комп'ютера та "
     "моніторингу\nвашої здатності відображати кольори та бачити мертві/биті пікселі на "
     "РК-дисплеях.",
-    "   На цій сторінці ви можете знайти декілька тестів на читання. За допомогою цих тестів ви\n"
-    "можете перевірити фокус монітора на всьому екрані та з різними кольорами шрифту і тла."};
+    "   На цій сторінці ви можете знайти декілька тестів на читання. За допомогою цих тестів ви"
+    " можете\nперевірити фокус монітора на всьому екрані та з різними кольорами шрифту і тла."};
 
-static QString read_en_en[]{
-    "   With this test, you can check your monitor's focus on the whole screen. Text reading\n"
-    "is especially important for all kinds of desktop work like word processing and web surfing,\n"
-    "where clear, sharp letters relax the eyes"};
+static QString read_en_en{
+    "   With this test, you can check your monitor's focus on the whole screen. Text reading "
+    "is especially important\nfor all kinds of desktop work like word processing and web surfing, "
+    "where clear, sharp letters relax the eyes."};
+
+static QString read_en_ua{
+    "   За допомогою цього тесту ви можете перевірити фокусування вашого монітора на всьому "
+    "екрані.\n   Читання тексту особливо важливе для всіх видів настільної роботи, таких як "
+    "обробка текстів і веб-\nсерфінг, де чіткі, різкі літери розслаблюють очі"};
 
 #endif // LANGUAGE_H

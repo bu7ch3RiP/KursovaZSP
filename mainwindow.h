@@ -86,6 +86,9 @@ private:
     void checkSelectedTests();
     void SetUALocalization();
     void SetENLocalization();
+
+    void SetPreview(QLabel *preview_lable, const char *picture);
+    void SetHoveredLables();
 };
 
 #endif // MAINWINDOW_H

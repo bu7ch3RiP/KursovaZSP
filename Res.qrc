@@ -11,5 +11,12 @@
         <file>pictures/Scope.png</file>
         <file>pictures/Converage.png</file>
         <file>pictures/MonitorTesting.ico</file>
+        <file>pictures/WhiteBlackReadPreview.png</file>
+        <file>pictures/ReadPageTestPreview.png</file>
+        <file>pictures/BlackWhiteReadPreview.png</file>
+        <file>pictures/BlueReadPreview.png</file>
+        <file>pictures/MagentaReadPreview.png</file>
+        <file>pictures/RedReadPreview.png</file>
+        <file>pictures/YellowReadPreview.png</file>
     </qresource>
 </RCC>
