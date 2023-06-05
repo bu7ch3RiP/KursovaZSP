@@ -1,10 +1,7 @@
-
 #ifndef GRIDWIDGET_H
 #define GRIDWIDGET_H
 
-
 #include <QWidget>
-
 
 class GridTest : public QWidget
 {

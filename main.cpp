@@ -1,6 +1,6 @@
-#include "mainwindow.h"
 #include <QApplication>
 #include <QLabel>
+#include "UI/mainwindow.h"
 
 #include <QFile>
 #include <QString>

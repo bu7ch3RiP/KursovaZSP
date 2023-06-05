@@ -14,20 +14,22 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        mainwindow.cpp
-        color_test.cpp
-        grid_test.cpp
-        read_test.cpp
-        calibration_focus_test.cpp
-        calibration_focus_test.h
-        read_test.h
-        grid_test.h
-        language.h
-        preference.h
-        about.h
-        color_test.h
-        mainwindow.h
-        mainwindow.ui
+        UI/mainwindow.cpp
+        Tests/color_test.cpp
+        Tests/grid_test.cpp
+        UI/systray.cpp
+        Tests/read_test.cpp
+        Tests/calibration_focus_test.cpp
+        Tests/calibration_focus_test.h
+        Tests/read_test.h
+        Tests/grid_test.h
+        Language/language.h
+        UI/systray.h
+        UI/preference.h
+        UI/about.h
+        Tests/color_test.h
+        UI/mainwindow.h
+        UI/mainwindow.ui
 )
 
 qt6_add_resources(PROJECT_SOURCES Res.qrc)

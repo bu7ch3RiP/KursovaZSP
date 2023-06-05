@@ -11,7 +11,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
-#include "language.h"
+#include "../Language/language.h"
 
 class About : public QDialog
 {

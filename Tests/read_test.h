@@ -1,7 +1,5 @@
-
 #ifndef READTEST_H
 #define READTEST_H
-
 
 #include <QWidget>
 #include <QColor>

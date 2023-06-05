@@ -6,10 +6,11 @@
 #include <QLabel>
 #include <QMainWindow>
 #include <QMouseEvent>
-#include "calibration_focus_test.h"
-#include "color_test.h"
-#include "grid_test.h"
-#include "read_test.h"
+#include "../Tests/calibration_focus_test.h"
+#include "../Tests/color_test.h"
+#include "../Tests/grid_test.h"
+#include "../Tests/read_test.h"
+#include "systray.h"
 #include <vector>
 
 QT_BEGIN_NAMESPACE
@@ -72,6 +73,7 @@ private:
     CalibrationFocusTest *cf_test = nullptr;
     Preference *preference = nullptr;
     About *about = nullptr;
+    SysTray *sys_tray = nullptr;
     LanguageMode language_state_;
 
 private:
@@ -89,6 +91,9 @@ private:
 
     void SetPreview(QLabel *preview_lable, const char *picture);
     void SetHoveredLables();
+
+private:
+    void closeEvent(QCloseEvent *event) override;
 };
 
 #endif // MAINWINDOW_H

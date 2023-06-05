@@ -1,8 +1,8 @@
 
 #include "mainwindow.h"
+#include "../Language/language.h"
 #include "./ui_mainwindow.h"
 #include "about.h"
-#include "language.h"
 #include "preference.h"
 
 #include <QAction>
@@ -33,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     , language_state_{LanguageMode::kEN}
 {
     ui->setupUi(this);
+    sys_tray = new SysTray();
     setWindowTitle("Monitor testing");
     int width_window_size_ = ui->line->width() + 20;
     int height_ = QGuiApplication::primaryScreen()->geometry().height();
@@ -43,11 +44,15 @@ MainWindow::MainWindow(QWidget *parent)
     SetHoveredLables();
     ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0] : page_hints_ua[0]);
     SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/CalibrationTestPreview.png");
+    connect(sys_tray, &SysTray::showApp, this, &MainWindow::show);
+    connect(sys_tray, &SysTray::hideApp, this, &MainWindow::close);
+    connect(sys_tray, &SysTray::closeApp, this, &QCoreApplication::exit);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete sys_tray;
 }
 
 void MainWindow::SetUALocalization()
@@ -890,6 +895,15 @@ void MainWindow::SetHoveredLables()
     ui->ColorHideColorPalette180->installEventFilter(this); //+
 }
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (this->isVisible()) {
+        event->ignore();
+        this->hide();
+        sys_tray->showMessage();
+    }
+}
+
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
     if (obj == (QObject *) ui->Lable1Hider) {
@@ -1344,9 +1358,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
         // pass the event on to the parent class
         return QWidget::eventFilter(obj, event);
     }
-
-    //ui->LHints->setText(language_state_ == LanguageMode::kEN ? page_hints_en[0] : page_hints_ua[0]);
-    //SetPreview(ui->CalibrationPicture, ":/color/palette/pictures/CalibrationTestPreview.png");
 }
 
 void MainWindow::on_actionExit_triggered()
