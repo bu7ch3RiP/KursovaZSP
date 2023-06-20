@@ -86,7 +86,6 @@ void ReadTest::paintEvent(QPaintEvent *event){
     painter.setFont(font);
 
     QScreen *screen = QGuiApplication::primaryScreen();
-
     QString can_you_read_text = "Can you read text?";
     long long text_length = (can_you_read_text.length() + 15) * 4;
 
